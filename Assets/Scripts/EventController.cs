@@ -9,6 +9,7 @@ public class EventController : MonoBehaviour
     [SerializeField] private GameObject playerBeyblade;
     [SerializeField] private GameObject enemyBeyblade;
     [SerializeField] public float time;
+    [SerializeField] private ScriptableObject objectEffects;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +17,6 @@ public class EventController : MonoBehaviour
         ShowIntroSequence();
         playerBeyblade.GetComponent<Beyblade>().StartBeyblade();
         enemyBeyblade.GetComponent<Beyblade>().StartBeyblade();
-        time = time;
     }
     
     void Update()
