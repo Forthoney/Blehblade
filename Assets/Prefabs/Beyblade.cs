@@ -25,7 +25,7 @@ public class Beyblade : MonoBehaviour
             beybladeSpeed -= Time.deltaTime;
             if (beybladeSpeed <= 0)
             {
-                eventControl.GetComponent<eventController>().defeat(isPlayer);
+                //eventControl.defeat(isPlayer);
                 gameRunning = false;
             }
 
