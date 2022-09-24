@@ -69,7 +69,7 @@ crashlytics-build.properties
 
 .idea/
 Blehblade.sln
-Assembly-CSharp.csproj
+*.csproj
 
 # Temporary auto-generated Android Assets
 [Aa]ssets[Ss]treamingAssetsaa.meta
