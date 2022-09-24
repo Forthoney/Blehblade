@@ -8,13 +8,20 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] private GameObject eventControl;
     private void OnMouseDown()
     {
-        BringToForeground();
-        eventControl.GetComponent<EventController>().PlayerUse(this);
+        StartCoroutine(Select());
     }
 
     private void BringToForeground()
     {
+        throw new NotImplementedException();
+    }
+    
+    IEnumerator Select()
+    {
+        BringToForeground();
         ChangeSprite();
+        yield return new WaitForSeconds(0.5f);
+        eventControl.GetComponent<EventController>().PlayerUse(gameObject);
     }
 
     //Maybe we won't change the sprite
