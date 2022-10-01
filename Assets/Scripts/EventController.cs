@@ -10,7 +10,8 @@ public class EventController : MonoBehaviour
     [SerializeField] private GameObject enemyBeyblade;
     [SerializeField] public float time;
     [SerializeField] public List<GameObject> puzzleObjects;
-    private Dictionary<GameObject, bool> _puzzleProgress;
+    private HashSet<GameObject> _usedObjects;
+    private int _remainingSteps;
 
     private static EventController _instance;
     public static EventController Instance
@@ -28,17 +29,13 @@ public class EventController : MonoBehaviour
     void Awake()
     {
         _instance = this;
-        _puzzleProgress = new Dictionary<GameObject, bool>();
-        foreach (GameObject obj in puzzleObjects)
-        {
-            _puzzleProgress.Add(obj, false);
-        }
+        _usedObjects = new HashSet<GameObject>();
+        _remainingSteps = puzzleObjects.Count;
     }
     
     // Start is called before the first frame update
     void Start()
     {
-        ShowIntroSequence();
         playerBeyblade.GetComponent<Beyblade>().StartBeyblade();
         enemyBeyblade.GetComponent<Beyblade>().StartBeyblade();
     }
@@ -51,27 +48,28 @@ public class EventController : MonoBehaviour
             Defeat();
         }
     }
-
-    private void ShowIntroSequence()
-    {
-        
-    }
-
-    private void ShowEndgameSequence()
-    {
-        
-    }
-
+    
     public void PlayerUse(GameObject item)
     {
-        if (_puzzleProgress.ContainsKey(item))
+        if (!_usedObjects.Contains(item))
         {
-            _puzzleProgress[item] = true;
+            _usedObjects.Add(item);
+            _remainingSteps -= 1;
+        }
+
+        if (_remainingSteps == 0)
+        {
+            Win();
         }
     }
 
     private void Defeat()
     {
-        ShowEndgameSequence();
+        Debug.Log("Defeat");
+    }
+
+    private void Win()
+    {
+        Debug.Log("Win");
     }
 }
