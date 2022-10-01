@@ -11,16 +11,23 @@ public class InventoryObject : MonoBehaviour
     [SerializeField] private float returnSpeed = 0.015f;
     public Vector3 defaultPos;
     public int pickedIndex;
+    [SerializeField] private string targetObjectName;
+    private bool inTargetObject = false;
     
     
     private void OnMouseDown()
     {
         dragging = true;
+        gameObject.GetComponent<BoxCollider>().enabled = true;
     }
 
     private void OnMouseUp()
     {
         dragging = false;
+        if (inTargetObject)
+        {
+            Debug.Log("Trigger Event!");
+        }
     }
 
     // Update is called once per frame
@@ -37,6 +44,26 @@ public class InventoryObject : MonoBehaviour
         else
         {
             this.transform.position = Vector3.Lerp(transform.position, defaultPos, returnSpeed);
+        }
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        Debug.Log("Collision enter");
+        if (collider.name == targetObjectName)
+        {
+            Debug.Log("Collided with target!");
+            inTargetObject = true;
+        }
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        Debug.Log("Collision exit");
+        if (collider.name == targetObjectName)
+        {
+            Debug.Log("No longer colliding with target");
+            inTargetObject = false;
         }
     }
 }
