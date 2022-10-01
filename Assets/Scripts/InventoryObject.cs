@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class InventoryObject : MonoBehaviour
 {
-    [SerializeField] private GameObject eventControl;
-    private bool dragging = false;
     [SerializeField] private float inventoryZ = 1;
     [SerializeField] private string itemName;
     [SerializeField] private float returnSpeed = 0.015f;
     public Vector3 defaultPos;
     public int pickedIndex;
     [SerializeField] private string targetObjectName;
-    private bool inTargetObject = false;
-    
-    
+    private bool _inTargetObject = false;
+    private bool _dragging = false;
+
     private void OnMouseDown()
     {
-        dragging = true;
+        _dragging = true;
         gameObject.GetComponent<BoxCollider>().enabled = true;
     }
 
     private void OnMouseUp()
     {
-        dragging = false;
-        if (inTargetObject)
+        _dragging = false;
+        if (_inTargetObject)
         {
+            EventController.Instance.PlayerUse(gameObject);
             Debug.Log("Trigger Event!");
         }
     }
@@ -33,11 +32,11 @@ public class InventoryObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dragging)
+        if (_dragging)
         {
-            Vector3 inputMousePosi = Input.mousePosition;
-            inputMousePosi.z = inventoryZ;
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(inputMousePosi);
+            Vector3 inputMousePos = Input.mousePosition;
+            inputMousePos.z = inventoryZ;
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(inputMousePos);
             //Debug.Log(mousePosition);
             this.transform.position = mousePosition;
         }
@@ -47,23 +46,19 @@ public class InventoryObject : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision enter");
-        if (collider.name == targetObjectName)
+        if (other.name == targetObjectName)
         {
-            Debug.Log("Collided with target!");
-            inTargetObject = true;
+            _inTargetObject = true;
         }
     }
 
-    void OnTriggerExit(Collider collider)
+    void OnTriggerExit(Collider other)
     {
-        Debug.Log("Collision exit");
-        if (collider.name == targetObjectName)
+        if (other.name == targetObjectName)
         {
-            Debug.Log("No longer colliding with target");
-            inTargetObject = false;
+            _inTargetObject = false;
         }
     }
 }
