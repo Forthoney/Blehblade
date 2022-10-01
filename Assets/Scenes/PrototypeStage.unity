@@ -889,7 +889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 833841820512585086, guid: 045d8e2581e5b9f458545b7404593711, type: 3}
       propertyPath: m_Name
-      value: EventCollider
+      value: TestCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045d8e2581e5b9f458545b7404593711, type: 3}
@@ -914,7 +914,7 @@ PrefabInstance:
       objectReference: {fileID: 1436508042}
     - target: {fileID: 4636556331044088013, guid: a6b091a67e8c33448b745f327c95551d, type: 3}
       propertyPath: targetObjectName
-      value: InventoryColliderTest
+      value: TestCollider
       objectReference: {fileID: 0}
     - target: {fileID: 4636556331044088017, guid: a6b091a67e8c33448b745f327c95551d, type: 3}
       propertyPath: m_RootOrder
