@@ -9,8 +9,31 @@ public class EventController : MonoBehaviour
     [SerializeField] private GameObject playerBeyblade;
     [SerializeField] private GameObject enemyBeyblade;
     [SerializeField] public float time;
-    [SerializeField] private ScriptableObject objectEffects;
+    [SerializeField] public List<GameObject> puzzleObjects;
+    private Dictionary<GameObject, bool> puzzleProgress = new Dictionary<GameObject, bool>();
 
+    private static EventController _instance;
+    public static EventController Instance
+    {
+        get
+        {
+            if (_instance is null)
+            {
+                Debug.LogError("Null EventController");
+            }
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        _instance = this;
+        foreach (GameObject obj in puzzleObjects)
+        {
+            puzzleProgress[obj] = false;
+        }
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,13 +56,21 @@ public class EventController : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    public void PlayerUse(GameObject interactableItem)
+    private void ShowEndgameSequence()
     {
-        
+        throw new NotImplementedException();
+    }
+
+    public void PlayerUse(GameObject item)
+    {
+        if (puzzleProgress.ContainsKey(item))
+        {
+            puzzleProgress[item] = true;
+        }
     }
 
     private void Defeat()
     {
-        throw new NotImplementedException();
+        ShowEndgameSequence();
     }
 }
