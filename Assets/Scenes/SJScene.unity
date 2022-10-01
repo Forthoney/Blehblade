@@ -1027,7 +1027,8 @@ MonoBehaviour:
   playerBeyblade: {fileID: 644855641}
   enemyBeyblade: {fileID: 12569771}
   time: 100
-  puzzleObjects: []
+  puzzleObjects:
+  - {fileID: 330180400}
 --- !u!4 &1786045833
 Transform:
   m_ObjectHideFlags: 0
