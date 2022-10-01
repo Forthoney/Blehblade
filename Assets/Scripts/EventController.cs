@@ -10,7 +10,7 @@ public class EventController : MonoBehaviour
     [SerializeField] private GameObject enemyBeyblade;
     [SerializeField] public float time;
     [SerializeField] public List<GameObject> puzzleObjects;
-    private Dictionary<GameObject, bool> puzzleProgress = new Dictionary<GameObject, bool>();
+    private Dictionary<GameObject, bool> _puzzleProgress;
 
     private static EventController _instance;
     public static EventController Instance
@@ -28,9 +28,10 @@ public class EventController : MonoBehaviour
     void Awake()
     {
         _instance = this;
+        _puzzleProgress = new Dictionary<GameObject, bool>();
         foreach (GameObject obj in puzzleObjects)
         {
-            puzzleProgress[obj] = false;
+            _puzzleProgress.Add(obj, false);
         }
     }
     
@@ -53,19 +54,19 @@ public class EventController : MonoBehaviour
 
     private void ShowIntroSequence()
     {
-        throw new NotImplementedException();
+        
     }
 
     private void ShowEndgameSequence()
     {
-        throw new NotImplementedException();
+        
     }
 
     public void PlayerUse(GameObject item)
     {
-        if (puzzleProgress.ContainsKey(item))
+        if (_puzzleProgress.ContainsKey(item))
         {
-            puzzleProgress[item] = true;
+            _puzzleProgress[item] = true;
         }
     }
 
