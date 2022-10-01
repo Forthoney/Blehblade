@@ -18,7 +18,6 @@ public class InteractableObject : MonoBehaviour
     
     private void OnMouseDown()
     {
-        Debug.Log("Interactable Object Mouseclick");
         _movingToForeground = true;
     }
 
@@ -27,7 +26,13 @@ public class InteractableObject : MonoBehaviour
         var step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, _centerOfScreen, step);
         if (Vector3.Distance(transform.position, _centerOfScreen) > 0.001f) return;
-        
+
+        StartCoroutine(ReplaceItem());
+    }
+
+    private IEnumerator ReplaceItem()
+    {
+        yield return new WaitForSeconds(0.5f);
         correspondingInventoryObj.SetActive(true);
         Destroy(gameObject);
     }
