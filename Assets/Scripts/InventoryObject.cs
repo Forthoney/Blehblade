@@ -8,8 +8,10 @@ public class InventoryObject : MonoBehaviour
     private bool dragging = false;
     [SerializeField] private float inventoryZ = 1;
     [SerializeField] private string itemName;
+    [SerializeField] private float returnSpeed = 0.015f;
     public Vector3 defaultPos;
     public int pickedIndex;
+    
     
     private void OnMouseDown()
     {
@@ -34,7 +36,7 @@ public class InventoryObject : MonoBehaviour
         }
         else
         {
-            this.transform.position = defaultPos;
+            this.transform.position = Vector3.Lerp(transform.position, defaultPos, returnSpeed);
         }
     }
 }
