@@ -7,9 +7,9 @@ public class InventoryObject : MonoBehaviour
     [SerializeField] private float inventoryZ = 1;
     [SerializeField] private string itemName;
     [SerializeField] private float returnSpeed = 0.015f;
-    public Vector3 defaultPos;
-    public int pickedIndex;
     [SerializeField] private string targetObjectName;
+    [SerializeField] private List<GameObject> triggerObjects;
+    public Vector3 defaultPos;
     private bool _inTargetObject = false;
     private bool _dragging = false;
 
@@ -25,6 +25,10 @@ public class InventoryObject : MonoBehaviour
         if (_inTargetObject)
         {
             EventController.Instance.PlayerUse(gameObject);
+            foreach (var interactableObj in triggerObjects)
+            {
+                interactableObj.SetActive(true);
+            }
             Debug.Log("Trigger Event!");
         }
     }
@@ -38,11 +42,11 @@ public class InventoryObject : MonoBehaviour
             inputMousePos.z = inventoryZ;
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(inputMousePos);
             //Debug.Log(mousePosition);
-            this.transform.position = mousePosition;
+            transform.position = mousePosition;
         }
         else
         {
-            this.transform.position = Vector3.Lerp(transform.position, defaultPos, returnSpeed);
+            transform.position = Vector3.Lerp(transform.position, defaultPos, returnSpeed);
         }
     }
 
