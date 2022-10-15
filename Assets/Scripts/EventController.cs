@@ -9,12 +9,33 @@ public class EventController : MonoBehaviour
     [SerializeField] private GameObject playerBeyblade;
     [SerializeField] private GameObject enemyBeyblade;
     [SerializeField] public float time;
-    [SerializeField] private ScriptableObject objectEffects;
+    [SerializeField] public List<GameObject> puzzleObjects;
+    private HashSet<GameObject> _usedObjects;
+    private int _remainingSteps;
 
+    private static EventController _instance;
+    public static EventController Instance
+    {
+        get
+        {
+            if (_instance is null)
+            {
+                Debug.LogError("Null EventController");
+            }
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        _instance = this;
+        _usedObjects = new HashSet<GameObject>();
+        _remainingSteps = puzzleObjects.Count;
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
-        ShowIntroSequence();
         playerBeyblade.GetComponent<Beyblade>().StartBeyblade();
         enemyBeyblade.GetComponent<Beyblade>().StartBeyblade();
     }
@@ -27,19 +48,28 @@ public class EventController : MonoBehaviour
             Defeat();
         }
     }
-
-    private void ShowIntroSequence()
+    
+    public void PlayerUse(GameObject item)
     {
-        throw new NotImplementedException();
-    }
+        if (!_usedObjects.Contains(item))
+        {
+            _usedObjects.Add(item);
+            _remainingSteps -= 1;
+        }
 
-    public void PlayerUse(GameObject interactableItem)
-    {
-        
+        if (_remainingSteps == 0)
+        {
+            Win();
+        }
     }
 
     private void Defeat()
     {
-        throw new NotImplementedException();
+        Debug.Log("Defeat");
+    }
+
+    private void Win()
+    {
+        Debug.Log("Win");
     }
 }
