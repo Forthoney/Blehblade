@@ -8,13 +8,16 @@ using UnityEngine.SceneManagement;
 
 public class EventController : MonoBehaviour
 {
-    [SerializeField] private GameObject sceneManager;
     [SerializeField] private GameObject playerBeyblade;
     [SerializeField] private GameObject enemyBeyblade;
+    // Time limit
     [SerializeField] public float time;
-    [SerializeField] public List<GameObject> puzzleObjects; //These need to be InventoryObjects
+    // List of puzzle objects (must have InteractableObject script attached)
+    [SerializeField] public List<GameObject> puzzleObjects;
     private HashSet<GameObject> _usedObjects;
+    public Camera mainCamera;
 
+    // Boilerplate to enable Singleton behavior
     private static EventController _instance;
     public static EventController Instance
     {
@@ -32,9 +35,11 @@ public class EventController : MonoBehaviour
     {
         _instance = this;
         _usedObjects = new HashSet<GameObject>();
+        // Calling mainCamera is expensive (https://stackoverflow.com/a/61998177/18077664), so we call it once
+        // here, then take it from here every time we need it for dragging an object.
+        mainCamera = Camera.main;
     }
     
-    // Start is called before the first frame update
     void Start()
     {
         playerBeyblade.GetComponent<Beyblade>().StartBeyblade();
