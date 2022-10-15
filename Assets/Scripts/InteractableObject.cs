@@ -15,8 +15,7 @@ public class InteractableObject : MonoBehaviour
     public Vector3 inventoryPos;
     private bool _inTargetObject = false;
     private readonly Vector3 _centerOfScreen = new Vector3(0.0f, 0.8f, -10.0f);
-    private Status _status = Status.Inactive;
-    private Movement _moving = Movement.Stationary;
+    private (Status, Movement) _state = (Status.Inactive, Movement.Stationary);
 
     private enum Status
     {
@@ -36,48 +35,30 @@ public class InteractableObject : MonoBehaviour
     
     void Update()
     {
-        switch (_status)
+        transform.position = _state switch
         {
-            case Status.Activating:
-                Move(_centerOfScreen, speedDuringActivation);
-                break;
-            case Status.Stashing:
-                Move(inventoryPos, speedDuringActivation);
-                break;
-            case Status.Active:
-                switch (_moving)
-                {
-                    case Movement.Dragging:
-                        transform.position = CalcMousePos();
-                        break;
-                    case Movement.Moving:
-                        Move(CalcMousePos(), speedDuringDragging);
-                        break;
-                    case Movement.Returning:
-                        Move(inventoryPos, speedDuringDragging);
-                        break;
-                    case Movement.Stationary:
-                        break;
-                }
-                break;
-            case Status.Inactive:
-                return;
-            default:
-                Debug.LogError("Unexpected case in update");
-                break;
-        }
+            (Status.Activating, _) => Move(_centerOfScreen, speedDuringActivation),
+            (Status.Stashing, _) => Move(inventoryPos, speedDuringActivation),
+            (Status.Active, Movement.Dragging) => CalcMousePos(),
+            (Status.Active, Movement.Moving) => Move(CalcMousePos(), speedDuringDragging),
+            (Status.Active, Movement.Returning) => Move(inventoryPos, speedDuringDragging),
+            _ => transform.position
+        };
     }
     
     private void OnMouseDown()
     {
-        switch (_status)
+        switch (_state.Item1)
         {
             case Status.Inactive:
-                _status = Status.Activating;
+                _state.Item1 = Status.Activating;
                 break;
             case Status.Active:
-                _moving = Movement.Moving;
+                _state.Item2 = Movement.Moving;
                 gameObject.GetComponent<BoxCollider>().enabled = true;
+                break;
+            case Status.Stashing:
+            case Status.Activating:
                 break;
             default:
                 Debug.LogError("Unexpected case in update");
@@ -87,46 +68,37 @@ public class InteractableObject : MonoBehaviour
     
     private void OnMouseUp()
     {
-        if (_moving != Movement.Dragging || _status != Status.Active) return;
-
-        _moving = Movement.Returning;
-        if (!_inTargetObject) return;
-        
-        EventController.Instance.PlayerUse(gameObject);
-        foreach (var interactableObj in triggerObjects)
+        if (_state == (Status.Active, Movement.Dragging))
         {
-            interactableObj.SetActive(true);
+            _state.Item2 = Movement.Returning;
+            if (!_inTargetObject) return;
+        
+            EventController.Instance.PlayerUse(gameObject);
+            foreach (var obj in triggerObjects)
+            {
+                obj.SetActive(true);
+            }
+            Debug.Log("Trigger Event!");
         }
-        Debug.Log("Trigger Event!");
     }
 
-    private void Move(Vector3 dest, float speed)
+    private Vector3 Move(Vector3 dest, float speed)
     {
         if (Vector3.Distance(transform.position, dest) < 0.001f)
         {
-            switch (_status)
+            _state = _state switch
             {
-                case Status.Activating:
-                    _status = Status.Stashing;
-                    break;
-                case Status.Stashing:
-                    _status = Status.Active;
-                    break;
-                default:
-                    _moving = _moving switch
-                    {
-                        Movement.Moving => Movement.Dragging,
-                        Movement.Returning => Movement.Stationary,
-                        _ => _moving
-                    };
-                    break;
-            }
-
-            return;
+                (Status.Activating, _) => (Status.Stashing, _state.Item2),
+                (Status.Stashing, _) => (Status.Active, _state.Item2),
+                (_, Movement.Moving) => (_state.Item1, Movement.Dragging),
+                (_, Movement.Returning) => (_state.Item1, Movement.Stationary),
+                _ => _state
+            };
+            return transform.position;
         }
         
         var step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, dest, step);
+        return Vector3.MoveTowards(transform.position, dest, step);
     }
     
     void OnTriggerEnter(Collider other)
