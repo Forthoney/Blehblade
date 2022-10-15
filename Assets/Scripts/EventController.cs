@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EventController : MonoBehaviour
@@ -9,10 +10,9 @@ public class EventController : MonoBehaviour
     [SerializeField] private GameObject playerBeyblade;
     [SerializeField] private GameObject enemyBeyblade;
     [SerializeField] public float time;
-    [SerializeField] public List<GameObject> puzzleObjects;
+    [SerializeField] public List<GameObject> puzzleObjects; //These need to be InventoryObjects
     private HashSet<GameObject> _usedObjects;
-    private int _remainingSteps;
-
+    
     private static EventController _instance;
     public static EventController Instance
     {
@@ -30,7 +30,6 @@ public class EventController : MonoBehaviour
     {
         _instance = this;
         _usedObjects = new HashSet<GameObject>();
-        _remainingSteps = puzzleObjects.Count;
     }
     
     // Start is called before the first frame update
@@ -54,10 +53,9 @@ public class EventController : MonoBehaviour
         if (!_usedObjects.Contains(item))
         {
             _usedObjects.Add(item);
-            _remainingSteps -= 1;
         }
 
-        if (_remainingSteps == 0)
+        if (_usedObjects.Count == puzzleObjects.Count)
         {
             Win();
         }
@@ -71,5 +69,6 @@ public class EventController : MonoBehaviour
     private void Win()
     {
         Debug.Log("Win");
+        
     }
 }
