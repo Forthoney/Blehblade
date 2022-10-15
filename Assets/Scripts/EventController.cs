@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class EventController : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class EventController : MonoBehaviour
     [SerializeField] public float time;
     [SerializeField] public List<GameObject> puzzleObjects; //These need to be InventoryObjects
     private HashSet<GameObject> _usedObjects;
-    
+
     private static EventController _instance;
     public static EventController Instance
     {
@@ -69,6 +71,6 @@ public class EventController : MonoBehaviour
     private void Win()
     {
         Debug.Log("Win");
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
