@@ -11,9 +11,10 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] private List<GameObject> triggerObjects;
     [SerializeField] private float speedDuringActivation = 1.0f;
     [SerializeField] private float speedDuringDragging = 2.0f;
-    
-    public Vector3 inventoryPos;
+
+    public Vector3 inventoryPos { get; } // TODO: Change this to private once the inventory manager script is finished
     private bool _inTargetObject = false;
+    private Camera mainCamera = Camera.main;
     private readonly Vector3 _centerOfScreen = new Vector3(0.0f, 0.8f, -10.0f);
     private (Status, Movement) _state = (Status.Inactive, Movement.Stationary);
 
@@ -121,8 +122,7 @@ public class InteractableObject : MonoBehaviour
     {
         var inputMousePos = Input.mousePosition;
         inputMousePos.z = inventoryZ;
-        var mousePosition = Camera.main.ScreenToWorldPoint(inputMousePos);
-        //Debug.Log(mousePosition);
-        return mousePosition;
+        System.Diagnostics.Debug.Assert(Camera.main != null, "Camera.main != null");
+        return mainCamera.ScreenToWorldPoint(inputMousePos);
     }
 }
