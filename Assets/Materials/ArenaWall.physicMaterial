@@ -6,9 +6,9 @@ PhysicMaterial:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Frictionless
+  m_Name: ArenaWall
   dynamicFriction: 0
   staticFriction: 0
-  bounciness: 1
+  bounciness: 0.3
   frictionCombine: 0
   bounceCombine: 0

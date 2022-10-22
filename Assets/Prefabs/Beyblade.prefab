@@ -98,8 +98,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
+  m_Constraints: 112
+  m_CollisionDetection: 2
 --- !u!64 &2353795346670780046
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6684368282936555147}
-  m_Material: {fileID: 13400000, guid: cf937425f3d194459816544d12d401c7, type: 2}
+  m_Material: {fileID: 13400000, guid: dd679e461188cdd4babc5a3387daa439, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -129,4 +129,4 @@ MonoBehaviour:
   initSpeed: {x: 0, y: 0, z: 0}
   eventControl: {fileID: 0}
   isPlayer: 0
-  vel: 0
+  initialVelocity: 100
