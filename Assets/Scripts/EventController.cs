@@ -72,6 +72,11 @@ public class EventController : MonoBehaviour
 
     private void Defeat()
     {
+        var playerBeybladeControl = playerBeyblade.GetComponent<Beyblade>();
+        var enemyBeybladeControl = enemyBeyblade.GetComponent<Beyblade>();
+        playerBeybladeControl.Decelerate();
+        enemyBeybladeControl.MoveAwayFrom(playerBeyblade.transform.position);
+        
         Debug.Log("Defeat");
     }
 

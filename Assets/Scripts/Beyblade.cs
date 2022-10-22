@@ -5,8 +5,7 @@ using UnityEngine;
 public class Beyblade : MonoBehaviour
 {
     [SerializeField] private bool isPlayer;
-    [SerializeField] private float initialVelocity;
-    private float _currentVelocity;
+    [SerializeField] private float force;
     private Rigidbody _rigidbody;
 
     public void Start()
@@ -17,20 +16,31 @@ public class Beyblade : MonoBehaviour
     public void StartBeyblade()
     {
         _rigidbody.isKinematic = false;
-        _currentVelocity = isPlayer? initialVelocity / 10 : initialVelocity / 20;
-        AddRandomForce(initialVelocity);
+        AddRandomForce(force);
+        force = isPlayer? force / 10 : force / 20;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_currentVelocity < 0.01f) return;
-        AddRandomForce(EventController.Instance.remainingTime / EventController.Instance.time * _currentVelocity);
+        AddRandomForce(EventController.Instance.remainingTime / EventController.Instance.time * force);
     }
 
     private void AddRandomForce(float velocity)
     {
         var randomForce = Random.insideUnitCircle * velocity;
         _rigidbody.AddForce(new Vector3(randomForce.x, 0, randomForce.y));
+    }
+
+    public void Decelerate()
+    {
+        _rigidbody.AddForce(-_rigidbody.velocity);
+        _rigidbody.isKinematic = true;
+    }
+
+    public void MoveAwayFrom(Vector3 otherPosition)
+    {
+        _rigidbody.AddForce(otherPosition - gameObject.transform.position);
+        _rigidbody.isKinematic = true;
     }
 }

@@ -126,7 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e730490c2701c4d858379fd6fe51a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initSpeed: {x: 0, y: 0, z: 0}
-  eventControl: {fileID: 0}
   isPlayer: 0
-  initialVelocity: 100
+  force: 0
