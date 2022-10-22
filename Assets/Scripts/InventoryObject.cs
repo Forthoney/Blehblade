@@ -12,6 +12,7 @@ public class InventoryObject : MonoBehaviour
     public Vector3 defaultPos;
     private bool _inTargetObject = false;
     private bool _dragging = false;
+    [SerializeField] public DefaultLocation defaultFinder;
 
     private void OnMouseDown()
     {
@@ -46,6 +47,9 @@ public class InventoryObject : MonoBehaviour
         }
         else
         {
+            //transform.position = Vector3.Lerp(transform.position, defaultPos, returnSpeed);
+           // defaultPos = defaultFinder.GetDefaultLocation(new Vector3(0f,0f,0f));
+
             transform.position = Vector3.Lerp(transform.position, defaultPos, returnSpeed);
         }
     }
