@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 833841820512585080}
   - component: {fileID: 833841820512585087}
   - component: {fileID: 833841820512585083}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EventCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
