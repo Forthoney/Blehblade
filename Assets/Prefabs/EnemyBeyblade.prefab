@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4241109882809602896
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -4358753071533425440, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: initialVelocity
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535808869292488898, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535808869292488898, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.247
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535808869292488898, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.901
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535808869292488898, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.656
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535808869292488898, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535808869292488898, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535808869292488898, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535808869292488898, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535808869292488898, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535808869292488898, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535808869292488898, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088807013048923787, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d3597ac3769fd840b609b702036d86b, type: 2}
+    - target: {fileID: 6684368282936555147, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: m_Name
+      value: EnemyBeyblade
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
