@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -18,9 +19,7 @@ public class InteractableObject : MonoBehaviour
     // You can tell I was certainly inspired by CS1010's Finite State Machines
     private (Status, Movement) _state = (Status.Inactive, Movement.Stationary);
     private readonly Vector3 _centerOfScreen = new Vector3(0.0f, 0.8f, -10.0f);
-
-    // Inactive and Active are self explanatory. Activating and Stashing represent the status of the object while
-    // it is first being presented to the player.
+    
     private enum Status
     {
         Inactive,
@@ -41,17 +40,18 @@ public class InteractableObject : MonoBehaviour
     
     void Update()
     {
-        transform.position = _state switch
+        var transform1 = transform;
+        transform1.position = _state switch
         {
             (Status.Activating, _) => Move(_centerOfScreen, speedDuringActivation),
             (Status.Stashing, _) => Move(inventoryPos, speedDuringActivation),
             (Status.Active, Movement.Dragging) => CalcMousePos(),
             (Status.Active, Movement.Returning) => Move(inventoryPos, speedDuringDragging),
-            _ => transform.position
+            _ => (transform1).position
         };
     }
     
-    private void OnMouseDown()
+    void OnMouseDown()
     {
         switch (_state.Item1)
         {
@@ -62,25 +62,28 @@ public class InteractableObject : MonoBehaviour
                 _state.Item2 = Movement.Dragging;
                 gameObject.GetComponent<BoxCollider>().enabled = true;
                 break;
-            case Status.Stashing:
             case Status.Activating:
+            case Status.Stashing:
                 break;
             default:
-                Debug.LogError("Unexpected case in update");
-                break;
+                throw new ArgumentOutOfRangeException();
         }
     }
     
-    private void OnMouseUp()
+    void OnMouseUp()
     {
         if (_state != (Status.Active, Movement.Dragging)) return;
         
         _state.Item2 = Movement.Returning;
-        if (!_onTarget) return;
-        
+        if (_onTarget) Use();
+    }
+
+    private void Use()
+    {
         EventController.Instance.PlayerUse(gameObject);
         triggerObjects.ForEach(obj => obj.SetActive(true));
         Debug.Log("Trigger Event!");
+        Destroy(this.gameObject);
     }
 
     private Vector3 Move(Vector3 dest, float speed)
@@ -91,7 +94,12 @@ public class InteractableObject : MonoBehaviour
             return Vector3.MoveTowards(transform.position, dest, step);
         }
         
-        // If finished moving, change state but not transform
+        TransitionToStationary();
+        return transform.position;
+    }
+
+    private void TransitionToStationary()
+    {
         _state = _state switch
         {
             (Status.Activating, _) => (Status.Stashing, _state.Item2),
@@ -99,21 +107,20 @@ public class InteractableObject : MonoBehaviour
             (_, Movement.Returning) => (_state.Item1, Movement.Stationary),
             _ => _state
         };
-        return transform.position;
     }
-    
+
     void OnTriggerEnter(Collider other)
     {
-        Assert.AreNotEqual("", targetColliderName);
+        Assert.AreNotEqual("", targetColliderName, "targetColliderName is empty");
         if (other.name == targetColliderName)
         {
             _onTarget = true;
         }
     }
-
+    
     void OnTriggerExit(Collider other)
     {
-        Assert.AreNotEqual("", targetColliderName);
+        Assert.AreNotEqual("", targetColliderName, "targetColliderName is empty");
         if (other.name == targetColliderName)
         {
             _onTarget = false;
