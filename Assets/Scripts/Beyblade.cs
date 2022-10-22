@@ -5,14 +5,14 @@ using UnityEngine;
 public class Beyblade : MonoBehaviour
 {
     [SerializeField] private Vector3 initSpeed;
-    private float beybladeSpeed;
     private bool gameRunning = false;
     [SerializeField] private GameObject eventControl;
     [SerializeField] private bool isPlayer;
-
+    [SerializeField] private float initialVelocity;
+    private float _currentVelocity;
 
     // Physics
-    private Rigidbody rb;
+    private Rigidbody _rigidbody;
 
     // Keystrokes
     private bool spacePressed = false;
@@ -21,7 +21,6 @@ public class Beyblade : MonoBehaviour
     private bool aPressed = false;
     private bool dPressed = false;
 
-    public float vel;
 
 
 
@@ -31,62 +30,26 @@ public class Beyblade : MonoBehaviour
 
     public void Start()
     {
-        vel = 100;
-        rb = GetComponent<Rigidbody>();
-
+        _rigidbody = GetComponent<Rigidbody>();
     }
     public void StartBeyblade()
     {
-        gameRunning = true;
-        rb.velocity = initSpeed;
+        _rigidbody.isKinematic = false;
+        _currentVelocity = initialVelocity / 3;
+        AddRandomForce(initialVelocity);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        
-        updateKeyInputs();
-
-        
-
-        if (wPressed)
-        {
-            rb.AddForce(new Vector3(vel, 0, 0));
-        }
-
-        if (sPressed)
-        {
-            rb.AddForce(new Vector3(-vel, 0, 0));
-        }
-
-        if (aPressed)
-        {
-            rb.AddForce(new Vector3(0, 0, vel));
-        }
-
-        if (dPressed)
-        {
-            rb.AddForce(new Vector3(0, 0, -vel));
-        }
-
-        if (gameRunning)
-        {
-            beybladeSpeed -= Time.deltaTime;
-            if (beybladeSpeed <= 0)
-            {
-                //eventControl.defeat(isPlayer);
-                gameRunning = false;
-            }
-        }
+        if (_currentVelocity < 0.01f) return;
+        AddRandomForce(EventController.Instance.remainingTime / EventController.Instance.time * _currentVelocity);
     }
 
-    void updateKeyInputs()
+    private void AddRandomForce(float velocity)
     {
-        spacePressed = Input.GetKeyDown("space");
-        wPressed = Input.GetKeyDown("w");
-        sPressed = Input.GetKeyDown("s");
-        aPressed = Input.GetKeyDown("a");
-        dPressed = Input.GetKeyDown("d");
+        Debug.Log(velocity);
+        var randomForce = Random.insideUnitCircle * velocity;
+        _rigidbody.AddForce(new Vector3(randomForce.x, 0, randomForce.y));
     }
 }
