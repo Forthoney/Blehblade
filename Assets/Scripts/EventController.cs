@@ -11,11 +11,12 @@ public class EventController : MonoBehaviour
     [SerializeField] private GameObject playerBeyblade;
     [SerializeField] private GameObject enemyBeyblade;
     // Time limit
-    [SerializeField] public float time;
     // List of puzzle objects (must have InteractableObject script attached)
     [SerializeField] public List<GameObject> puzzleObjects;
     private HashSet<GameObject> _usedObjects;
     public Camera mainCamera;
+    public float time;
+    public float remainingTime;
 
     // Boilerplate to enable Singleton behavior
     private static EventController _instance;
@@ -44,12 +45,13 @@ public class EventController : MonoBehaviour
     {
         playerBeyblade.GetComponent<Beyblade>().StartBeyblade();
         enemyBeyblade.GetComponent<Beyblade>().StartBeyblade();
+        remainingTime = time;
     }
     
     void Update()
     {
-        time -= Time.deltaTime;
-        if (time < 0)
+        remainingTime -= Time.deltaTime;
+        if (remainingTime < 0)
         {
             Defeat();
         }
