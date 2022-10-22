@@ -17,6 +17,7 @@ public class EventController : MonoBehaviour
     public Camera mainCamera;
     public float time;
     public float remainingTime;
+    private bool _inProgress = true;
 
     // Boilerplate to enable Singleton behavior
     private static EventController _instance;
@@ -51,8 +52,9 @@ public class EventController : MonoBehaviour
     void Update()
     {
         remainingTime -= Time.deltaTime;
-        if (remainingTime < 0)
+        if (remainingTime < 0 && _inProgress)
         {
+            _inProgress = false;
             Defeat();
         }
     }
@@ -72,12 +74,21 @@ public class EventController : MonoBehaviour
 
     private void Defeat()
     {
+        StartCoroutine(PrepareForFinisher());
+        Debug.Log("Defeat");
+    }
+
+    private IEnumerator PrepareForFinisher()
+    {
         var playerBeybladeControl = playerBeyblade.GetComponent<Beyblade>();
         var enemyBeybladeControl = enemyBeyblade.GetComponent<Beyblade>();
         playerBeybladeControl.Decelerate();
-        enemyBeybladeControl.MoveAwayFrom(playerBeyblade.transform.position);
+        enemyBeybladeControl.PushTo(-playerBeyblade.transform.position + enemyBeyblade.transform.position);
+        yield return new WaitForSeconds(0.4f);
         
-        Debug.Log("Defeat");
+        playerBeyblade.GetComponent<Rigidbody>().isKinematic = true;
+        enemyBeybladeControl.PushTo((playerBeyblade.transform.position - enemyBeyblade.transform.position).normalized);
+        yield return new WaitForSeconds(0.2f);
     }
 
     private void Win()

@@ -7,6 +7,7 @@ public class Beyblade : MonoBehaviour
     [SerializeField] private bool isPlayer;
     [SerializeField] private float force;
     private Rigidbody _rigidbody;
+    private bool _inEndSequence = false;
 
     public void Start()
     {
@@ -23,6 +24,7 @@ public class Beyblade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_inEndSequence) return;
         AddRandomForce(EventController.Instance.remainingTime / EventController.Instance.time * force);
     }
 
@@ -34,13 +36,13 @@ public class Beyblade : MonoBehaviour
 
     public void Decelerate()
     {
+        _inEndSequence = true;
         _rigidbody.AddForce(-_rigidbody.velocity);
-        _rigidbody.isKinematic = true;
     }
 
-    public void MoveAwayFrom(Vector3 otherPosition)
+    public void PushTo(Vector3 direction)
     {
-        _rigidbody.AddForce(otherPosition - gameObject.transform.position);
-        _rigidbody.isKinematic = true;
+        _inEndSequence = true;
+        _rigidbody.AddForce(direction);
     }
 }

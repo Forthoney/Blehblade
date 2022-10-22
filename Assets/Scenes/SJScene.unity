@@ -2331,7 +2331,7 @@ MonoBehaviour:
   - {fileID: 53884214}
   - {fileID: 928606181}
   mainCamera: {fileID: 0}
-  time: 5
+  time: 100
   remainingTime: 0
 --- !u!4 &1786045833
 Transform:
