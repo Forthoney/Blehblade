@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: e457342f521957648b05a92c14ad72a3, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2518,15 +2518,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3425894546118110098, guid: c45ae6da898421248b9dc1f2d0355c81, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.247
+      value: -0.063
       objectReference: {fileID: 0}
     - target: {fileID: 3425894546118110098, guid: c45ae6da898421248b9dc1f2d0355c81, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.901
+      value: 1.155
       objectReference: {fileID: 0}
     - target: {fileID: 3425894546118110098, guid: c45ae6da898421248b9dc1f2d0355c81, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.656
+      value: -3.231
       objectReference: {fileID: 0}
     - target: {fileID: 3425894546118110098, guid: c45ae6da898421248b9dc1f2d0355c81, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2560,6 +2560,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyBeyblade
       objectReference: {fileID: 0}
+    - target: {fileID: 8744279477377871792, guid: c45ae6da898421248b9dc1f2d0355c81, type: 3}
+      propertyPath: initialVelocity
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c45ae6da898421248b9dc1f2d0355c81, type: 3}
 --- !u!1001 &6965033320436321343
@@ -2569,6 +2573,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562122111}
     m_Modifications:
+    - target: {fileID: 2533940869756340047, guid: 66f9410b8faef484b9535107c982a566, type: 3}
+      propertyPath: initialVelocity
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 4353680593085697316, guid: 66f9410b8faef484b9535107c982a566, type: 3}
       propertyPath: m_Name
       value: PlayerBeyblade
@@ -2579,15 +2587,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8500701393364058989, guid: 66f9410b8faef484b9535107c982a566, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.499
+      value: 0.989
       objectReference: {fileID: 0}
     - target: {fileID: 8500701393364058989, guid: 66f9410b8faef484b9535107c982a566, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.901
+      value: 1.14
       objectReference: {fileID: 0}
     - target: {fileID: 8500701393364058989, guid: 66f9410b8faef484b9535107c982a566, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.634
+      value: -3.04
       objectReference: {fileID: 0}
     - target: {fileID: 8500701393364058989, guid: 66f9410b8faef484b9535107c982a566, type: 3}
       propertyPath: m_LocalRotation.w

@@ -8,8 +8,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -4358753071533425440, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: force
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -4358753071533425440, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
       propertyPath: isPlayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4358753071533425440, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
+      propertyPath: forceMultiplier
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -4358753071533425440, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
       propertyPath: initialVelocity
@@ -61,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6684368282936555147, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
       propertyPath: m_Name
-      value: Beyblade
+      value: PlayerBeyblade
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
