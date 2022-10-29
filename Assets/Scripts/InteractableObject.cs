@@ -57,6 +57,7 @@ public class InteractableObject : MonoBehaviour
         {
             case Status.Inactive:
                 _state.Item1 = Status.Activating;
+                inventoryPos = EventController.Instance.getPos();
                 break;
             case Status.Active:
                 _state.Item2 = Movement.Dragging;
@@ -81,6 +82,7 @@ public class InteractableObject : MonoBehaviour
     private void Use()
     {
         EventController.Instance.PlayerUse(gameObject);
+        EventController.Instance.removeItem(inventoryPos);
         triggerObjects.ForEach(obj => obj.SetActive(true));
         Debug.Log("Trigger Event!");
         Destroy(this.gameObject);
