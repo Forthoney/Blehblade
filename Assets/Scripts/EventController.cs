@@ -90,16 +90,18 @@ public class EventController : MonoBehaviour
     public Vector3 PlaceInInventory(int objectId)
     {
         float dist = rightX - leftX;
+        Vector3 Position(int index) => new Vector3(((float) index / (maxItems + 1) * dist) - (dist / 2), defaultPos.y, defaultPos.z);
         for (int i = 0; i < _inventory.Count; i++)
         {
             if (_inventory[i] == -1)
             {
                 _inventory[i] = objectId;
-                return new Vector3(((float) i / (maxItems + 1) * dist) - (dist / 2), defaultPos.y, defaultPos.z);
+                return Position(i);
             }
         }
         _inventory.Add(objectId);
-        return new Vector3(((float)_inventory.Count / (maxItems + 1) * dist) - (dist/2), defaultPos.y, defaultPos.z);
+        Debug.Log(_inventory.Count);
+        return Position(_inventory.Count);
     }
 
     public void removeItem(int objectId)

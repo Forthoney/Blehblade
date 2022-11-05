@@ -8,7 +8,6 @@ using UnityEngine.Assertions;
 public class InteractableObject : MonoBehaviour, IInteractiveObject
 {
     [SerializeField] private float inventoryZ = 1;
-    [SerializeField] private string targetColliderName;
     [SerializeField] private List<GameObject> triggerObjects;
     [SerializeField] private float speedDuringActivation = 1.0f;
     [SerializeField] private float speedDuringDragging = 2.0f;
@@ -18,7 +17,13 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
     // A tuple of representing the state of the object. It consists of the object's activation status and movement.
     private (Status, Movement) _state = (Status.Inactive, Movement.Stationary);
     private readonly Vector3 _centerOfScreen = new Vector3(0.0f, 0.8f, -10.0f);
-    
+    private string _targetColliderName;
+
+    private void Awake()
+    {
+        _targetColliderName = gameObject.name + "Collider";
+    }
+
     private enum Status
     {
         Inactive,
@@ -80,6 +85,7 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
 
     public void Activate()
     {
+        gameObject.SetActive(true);
         gameObject.GetComponent<MeshCollider>().enabled = true;
     }
     
@@ -117,8 +123,8 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
 
     void OnTriggerEnter(Collider other)
     {
-        Assert.AreNotEqual("", targetColliderName, "targetColliderName is empty");
-        if (other.name == targetColliderName)
+        Assert.AreNotEqual("", _targetColliderName, "targetColliderName is empty");
+        if (other.name == _targetColliderName)
         {
             _onTarget = true;
         }
@@ -126,8 +132,8 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
     
     void OnTriggerExit(Collider other)
     {
-        Assert.AreNotEqual("", targetColliderName, "targetColliderName is empty");
-        if (other.name == targetColliderName)
+        Assert.AreNotEqual("", _targetColliderName, "targetColliderName is empty");
+        if (other.name == _targetColliderName)
         {
             _onTarget = false;
         }
