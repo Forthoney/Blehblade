@@ -18,6 +18,13 @@ public class EventController : MonoBehaviour
     public float time;
     public float remainingTime;
 
+    [SerializeField] private int maxItems;
+    [SerializeField] private float screenWidth; // set this in editor, total width
+    [SerializeField] private float leftX;
+    [SerializeField] private float rightX;
+    [SerializeField] private List<bool> itemTracking = new List<bool>();
+    [SerializeField] private Vector3 defaultPos;
+
     // Boilerplate to enable Singleton behavior
     private static EventController _instance;
     public static EventController Instance
@@ -34,6 +41,10 @@ public class EventController : MonoBehaviour
 
     void Awake()
     {
+        for (int i = 0; i < maxItems; i++)
+        {
+            itemTracking.Add(false);
+        }
         _instance = this;
         _usedObjects = new HashSet<GameObject>();
         // Calling mainCamera is expensive (https://stackoverflow.com/a/61998177/18077664), so we call it once
@@ -79,5 +90,28 @@ public class EventController : MonoBehaviour
     {
         Debug.Log("Win");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public Vector3 getPos()
+    {
+        float dist = rightX - leftX;
+        for (int i = 1; i <= maxItems; i++)
+        {
+            if (itemTracking[i - 1] == false)
+            {
+                itemTracking[i - 1] = true;
+                return new Vector3(((float)i / (maxItems + 1) * dist) - (dist/2), defaultPos.y, defaultPos.z);
+            }
+        }
+        return defaultPos;
+    }
+
+    public void removeItem(Vector3 pos)
+    {
+        float xPos = pos.x;
+        float dist = rightX - leftX;
+        int index = (int)Mathf.Round(( (xPos+(dist/2)) / dist * (maxItems + 1)) - 1);
+
+        itemTracking[index] = false;
     }
 }
