@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5499075539768534772}
   - component: {fileID: 5499075539768534773}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ArenaWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

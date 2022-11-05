@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class InteractableObject : MonoBehaviour
+public class InteractableObject : MonoBehaviour, IInteractiveObject
 {
     [SerializeField] private float inventoryZ = 1;
     [SerializeField] private string targetColliderName;
@@ -16,7 +16,6 @@ public class InteractableObject : MonoBehaviour
     public Vector3 inventoryPos; // TODO: Change this to private once the inventory manager script is finished
     private bool _onTarget = false;
     // A tuple of representing the state of the object. It consists of the object's activation status and movement.
-    // You can tell I was certainly inspired by CS1010's Finite State Machines
     private (Status, Movement) _state = (Status.Inactive, Movement.Stationary);
     private readonly Vector3 _centerOfScreen = new Vector3(0.0f, 0.8f, -10.0f);
     
@@ -79,11 +78,16 @@ public class InteractableObject : MonoBehaviour
         if (_onTarget) Use();
     }
 
+    public void Activate()
+    {
+        gameObject.GetComponent<MeshCollider>().enabled = true;
+    }
+    
     private void Use()
     {
         EventController.Instance.PlayerUse(gameObject);
         EventController.Instance.removeItem(inventoryPos);
-        triggerObjects.ForEach(obj => obj.SetActive(true));
+        triggerObjects.ForEach(obj => obj.GetComponent<IInteractiveObject>().Activate());
         Debug.Log("Trigger Event!");
         Destroy(this.gameObject);
     }
