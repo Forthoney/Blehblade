@@ -13,7 +13,7 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
     [SerializeField] private float speedDuringActivation = 1.0f;
     [SerializeField] private float speedDuringDragging = 2.0f;
 
-    public Vector3 inventoryPos; // TODO: Change this to private once the inventory manager script is finished
+    private Vector3 _inventoryPos; // TODO: Change this to private once the inventory manager script is finished
     private bool _onTarget = false;
     // A tuple of representing the state of the object. It consists of the object's activation status and movement.
     private (Status, Movement) _state = (Status.Inactive, Movement.Stationary);
@@ -43,9 +43,9 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
         transform1.position = _state switch
         {
             (Status.Activating, _) => Move(_centerOfScreen, speedDuringActivation),
-            (Status.Stashing, _) => Move(inventoryPos, speedDuringActivation),
+            (Status.Stashing, _) => Move(_inventoryPos, speedDuringActivation),
             (Status.Active, Movement.Dragging) => CalcMousePos(),
-            (Status.Active, Movement.Returning) => Move(inventoryPos, speedDuringDragging),
+            (Status.Active, Movement.Returning) => Move(_inventoryPos, speedDuringDragging),
             _ => (transform1).position
         };
     }
@@ -56,7 +56,7 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
         {
             case Status.Inactive:
                 _state.Item1 = Status.Activating;
-                inventoryPos = EventController.Instance.getPos();
+                _inventoryPos = EventController.Instance.PlaceInInventory(gameObject.GetInstanceID());
                 break;
             case Status.Active:
                 _state.Item2 = Movement.Dragging;
@@ -85,8 +85,8 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
     
     private void Use()
     {
-        EventController.Instance.PlayerUse(gameObject);
-        EventController.Instance.removeItem(inventoryPos);
+        EventController.Instance.PlayerUse(gameObject.GetInstanceID());
+        EventController.Instance.removeItem(gameObject.GetInstanceID());
         triggerObjects.ForEach(obj => obj.GetComponent<IInteractiveObject>().Activate());
         Debug.Log("Trigger Event!");
         Destroy(this.gameObject);
