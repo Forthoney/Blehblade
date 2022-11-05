@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AudioManageScript : MonoBehaviour
+{
+    [SerializeField] private AudioSource aSource;
+    [SerializeField] private List<AudioClip> musicList;
+    
+    void Start()
+    {
+        aSource = GetComponent<AudioSource>();
+    }
+
+    public void playSound(int index)
+    {
+        aSource.clip = musicList[index];
+        aSource.Play();
+    }
+}
