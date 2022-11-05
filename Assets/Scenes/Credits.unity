@@ -287,62 +287,34 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1
-
-    2
-
-    3
-
-    4
+  m_text: 'Credits:
 
 
-    5
+    ANIMATION/GRAPHICS:
 
-    6
+    Inseo Yoon
 
-    7
 
-    78
 
-    9
 
-    0
 
-    6
+    PROGRAMMING:
 
-    42
+    Josh
+    Abramson
 
-    1
+    Bokai Bi
 
-    34
+    Timothy Fong
 
-    6
+    Taj Gillin
 
-    899
+    Do Heon Han
 
-    8
+    Seong-Heon
+    Jung
 
-    6
 
-    5
-
-    43
-
-    4
-
-    67
-
-    89
-
-    0
-
-    98
-
-    765
-
-    3
-
-    3
 
 '
   m_isRightToLeft: 0
@@ -407,7 +379,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -107.8418, y: 0, z: -190.22852, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
