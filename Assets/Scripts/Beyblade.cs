@@ -18,6 +18,7 @@ public class Beyblade : MonoBehaviour
     public AudioClip collisionClip;
     
     public bool wallCollisionSound;
+    public float collisionVolume;
 
     public void Start()
     {
@@ -49,6 +50,8 @@ public class Beyblade : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+         _speaker.volume = collisionVolume;
+
         if (wallCollisionSound)
         {
             _speaker.Play();
