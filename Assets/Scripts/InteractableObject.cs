@@ -91,7 +91,7 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
     private void Use()
     {
         EventController.Instance.PlayerUse(gameObject.GetInstanceID());
-        EventController.Instance.removeItem(gameObject.GetInstanceID());
+        EventController.Instance.RemoveItem(gameObject.GetInstanceID());
         triggerObjects.ForEach(obj => obj.GetComponent<IInteractiveObject>().Activate());
         Debug.Log("Trigger Event!");
         Destroy(this.gameObject);
