@@ -12,21 +12,17 @@ public class EventController : MonoBehaviour
     [SerializeField] private GameObject enemyBeyblade;
 
     [SerializeField] private GameObject speaker;
-
-    public int level;
-
-    // Time limit
-    // List of puzzle objects (must have InteractableObject script attached)
     [SerializeField] public List<GameObject> puzzleObjects;
-    private HashSet<int> _usedObjects = new HashSet<int>();
+    public int level;
+    
+    private readonly HashSet<int> _usedObjects = new HashSet<int>();
     public Camera mainCamera;
     public float time;
     public float remainingTime;
     public Vector3 defaultPos;
 
     private const int MaxItems = 3;
-    private const float LeftX = -3;
-    private const float RightX = 3;
+    private const float Dist = 6;
     private readonly List<int> _inventory = new List<int>();
 
     private bool _isPlaying = true;
@@ -100,8 +96,7 @@ public class EventController : MonoBehaviour
 
     public Vector3 PlaceInInventory(int objectId)
     {
-        float dist = RightX - LeftX;
-        Vector3 Position(int i) => new Vector3((float) i / (MaxItems + 1) * dist - dist / 2f, defaultPos.y, defaultPos.z);
+        Vector3 Position(int i) => new Vector3((float) i / (MaxItems + 1) * Dist - Dist / 2f, defaultPos.y, defaultPos.z);
         for (int i = 0; i < _inventory.Count; i++)
         {
             if (_inventory[i] == -1)
@@ -115,7 +110,7 @@ public class EventController : MonoBehaviour
         return Position(_inventory.Count);
     }
 
-    public void removeItem(int objectId)
+    public void RemoveItem(int objectId)
     {
         Debug.Log(_inventory.Count);
         for (int i = 0; i < _inventory.Count; i++)
