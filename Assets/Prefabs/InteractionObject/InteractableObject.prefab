@@ -47,12 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211444b7e8431d241b39f25fdb4b3c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryZ: 1
-  targetColliderName: Placeholder
   triggerObjects: []
   speedDuringActivation: 10
   speedDuringDragging: 10
-  inventoryPos: {x: 0, y: 0.2, z: -10}
+  draggingPlaneZ: 7
 --- !u!23 &5681001252623606871
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -127,5 +125,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 10.000002}
+  m_Size: {x: 10, y: 50, z: 10.000002}
   m_Center: {x: 0, y: 0, z: 0}

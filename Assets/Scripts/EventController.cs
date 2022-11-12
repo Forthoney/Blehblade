@@ -95,26 +95,26 @@ public class EventController : MonoBehaviour
 
     public Vector3 PlaceInInventory(int objectId)
     {
-        Vector3 Position(int i) => new Vector3((float) i / (MaxItems + 1) * Dist - Dist / 2f, defaultPos.y, defaultPos.z);
+        Debug.LogFormat("Add Item: {0}", _inventory.Count);
+        Vector3 Position(int n) => new Vector3((float) n / (MaxItems + 1) * Dist - Dist / 2f, defaultPos.y, defaultPos.z);
         for (int i = 0; i < _inventory.Count; i++)
         {
             if (_inventory[i] == -1)
             {
                 _inventory[i] = objectId;
+                Debug.LogFormat("Add Item at {0}", i);
                 return Position(i);
             }
         }
         _inventory.Add(objectId);
-        Debug.Log(_inventory.Count);
         return Position(_inventory.Count);
     }
 
     public void RemoveItem(int objectId)
     {
-        Debug.Log(_inventory.Count);
+        Debug.LogFormat("Remove Item: {0}", _inventory.Count);
         for (int i = 0; i < _inventory.Count; i++)
         {
-            Debug.Log(_inventory[i]);
             if (_inventory[i] == objectId)
             {
                 _inventory[i] = -1;

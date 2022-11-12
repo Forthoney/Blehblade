@@ -23,7 +23,6 @@ public class ReactionObject : MonoBehaviour, IInteractiveObject
 
         if (changePosition)
         {
-            Debug.Log("Activating new position");
             gameObject.transform.localPosition = newPosition;
         }
     }
