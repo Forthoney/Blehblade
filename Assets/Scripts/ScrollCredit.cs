@@ -17,6 +17,6 @@ public class ScrollCredit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_RectTransform.anchoredPosition += new Vector2(0, speed);
+        m_RectTransform.anchoredPosition += new Vector2(0, speed * Time.deltaTime);
     }
 }
