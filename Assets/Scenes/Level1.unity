@@ -2334,7 +2334,7 @@ MonoBehaviour:
   - {fileID: 163605175}
   - {fileID: 368542444}
   mainCamera: {fileID: 0}
-  time: 100
+  time: 5
   remainingTime: 0
   maxItems: 3
   screenWidth: 0
