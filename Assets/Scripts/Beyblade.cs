@@ -21,6 +21,13 @@ public class Beyblade : MonoBehaviour
         AddRandomForce(force);
     }
 
+    public void EndBeyblade()
+    {
+        var rigidBody = gameObject.GetComponent<Rigidbody>();
+        rigidBody.isKinematic = true;
+        // rigidBody.velocity = new Vector3(0f, 0f, 0f);
+    }
+
     // Update is called once per frame
     void Update()
     {
