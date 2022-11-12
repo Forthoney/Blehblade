@@ -20,7 +20,7 @@ public class EventController : MonoBehaviour
     public Vector3 defaultPos;
 
     private const int MaxItems = 3;
-    private const float Dist = 6;
+    private const float Dist = 9;
     private readonly List<int> _inventory = new List<int>();
     private readonly HashSet<int> _usedObjects = new HashSet<int>();
 
