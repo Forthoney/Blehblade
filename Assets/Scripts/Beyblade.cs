@@ -6,7 +6,8 @@ public class Beyblade : MonoBehaviour
 {
     [SerializeField] private bool isPlayer;
     [SerializeField] private float force;
-    [SerializeField] private float forceMultiplier;
+    // How often the force is applied in Hz
+    [SerializeField] private float forceFrequency;
     private Rigidbody _rigidbody;
 
     public void Start()
@@ -17,26 +18,18 @@ public class Beyblade : MonoBehaviour
     public void StartBeyblade()
     {
         _rigidbody.isKinematic = false;
-        force *= forceMultiplier;
-        AddRandomForce(force);
+        // divide 1 sec by force frequency to get time interval to apply force
+        InvokeRepeating(nameof(AddRandomForce), 0f, 1f/forceFrequency);
     }
 
     public void EndBeyblade()
     {
-        var rigidBody = gameObject.GetComponent<Rigidbody>();
-        rigidBody.isKinematic = true;
-        // rigidBody.velocity = new Vector3(0f, 0f, 0f);
+        _rigidbody.isKinematic = true;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void AddRandomForce()
     {
-        if (force < 0.01f) return;
-        AddRandomForce(EventController.Instance.remainingTime / EventController.Instance.time * force);
-    }
-
-    private void AddRandomForce(float velocity)
-    {
+        var velocity = EventController.Instance.remainingTime / EventController.Instance.time * force;
         var randomForce = Random.insideUnitCircle * velocity;
         _rigidbody.AddForce(new Vector3(randomForce.x, 0, randomForce.y));
     }
