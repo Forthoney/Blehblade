@@ -187,7 +187,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &107430067 stripped
 GameObject:
@@ -594,7 +594,7 @@ Transform:
   - {fileID: 157280086}
   - {fileID: 1206138684}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &368542444 stripped
 GameObject:
@@ -2549,6 +2549,10 @@ PrefabInstance:
       propertyPath: initialVelocity
       value: 120
       objectReference: {fileID: 0}
+    - target: {fileID: 3807526649671486756, guid: 66f9410b8faef484b9535107c982a566, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4353680593085697316, guid: 66f9410b8faef484b9535107c982a566, type: 3}
       propertyPath: m_Name
       value: PlayerBeyblade
@@ -2703,7 +2707,7 @@ Transform:
   - {fileID: 353938475}
   - {fileID: 822556016}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1521029361
 PrefabInstance:
@@ -3122,13 +3126,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887293316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.4, z: 0}
-  m_LocalScale: {x: 0.5, y: 2, z: 0.5}
+  m_LocalPosition: {x: 0, y: -0.50000006, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1392354409}
   - {fileID: 421170385}
-  m_Father: {fileID: 2005373166}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1915594978
 PrefabInstance:
@@ -3369,9 +3373,8 @@ Transform:
   m_Children:
   - {fileID: 290628874}
   - {fileID: 1075541374}
-  - {fileID: 1887293317}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2026414215
 PrefabInstance:
