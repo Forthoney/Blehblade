@@ -1555,6 +1555,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBeyblade: {fileID: 1392354410}
   enemyBeyblade: {fileID: 421170386}
+  speaker: {fileID: 0}
+  level: 0
   puzzleObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -1977,7 +1979,7 @@ PrefabInstance:
     - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: newMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 7047de6ee2bcd744bab1d51bf3345d06, type: 2}
+      objectReference: {fileID: 2100000, guid: 2d10f2087b2264d89b8b754713a9416f, type: 2}
     - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: newPosition.x
       value: 5.08
@@ -1996,11 +1998,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: changePosition
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4879876876675541024, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: m_Name
-      value: GuitarGuy
+      value: GuitarGuy(Default)
       objectReference: {fileID: 0}
     - target: {fileID: 5035207501165383204, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: m_Materials.Array.data[0]
