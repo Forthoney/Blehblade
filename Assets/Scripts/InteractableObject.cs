@@ -16,7 +16,6 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
     private bool _onTarget = false;
     // A tuple of representing the state of the object. It consists of the object's activation status and movement.
     private (Status, Movement) _state = (Status.Inactive, Movement.Stationary);
-    private readonly Vector3 _centerOfScreen = new Vector3(0.0f, 0.8f, -10.0f);
     private string _targetColliderName;
 
     private void Awake()
@@ -47,7 +46,7 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
         var transform1 = transform;
         transform1.position = _state switch
         {
-            (Status.Activating, _) => Move(_centerOfScreen, speedDuringActivation),
+            (Status.Activating, _) => Move(EventController.Instance.defaultPos, speedDuringActivation),
             (Status.Stashing, _) => Move(_inventoryPos, speedDuringActivation),
             (Status.Active, Movement.Dragging) => CalcMousePos(),
             (Status.Active, Movement.Returning) => Move(_inventoryPos, speedDuringDragging),
