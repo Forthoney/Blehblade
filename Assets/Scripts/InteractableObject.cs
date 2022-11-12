@@ -7,11 +7,11 @@ using UnityEngine.Assertions;
 
 public class InteractableObject : MonoBehaviour, IInteractiveObject
 {
-    [SerializeField] private float inventoryZ = 1;
     [SerializeField] private List<GameObject> triggerObjects;
     [SerializeField] private float speedDuringActivation = 1.0f;
     [SerializeField] private float speedDuringDragging = 2.0f;
 
+    [SerializeField] private float draggingPlaneZ = 7f;
     private Vector3 _inventoryPos; // TODO: Change this to private once the inventory manager script is finished
     private bool _onTarget = false;
     // A tuple of representing the state of the object. It consists of the object's activation status and movement.
@@ -141,7 +141,7 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
     private Vector3 CalcMousePos()
     {
         var inputMousePos = Input.mousePosition;
-        inputMousePos.z = inventoryZ;
+        inputMousePos.z = draggingPlaneZ;
         return EventController.Instance.mainCamera.ScreenToWorldPoint(inputMousePos);
     }
 }
