@@ -128,4 +128,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   force: 0
-  forceMultiplier: 0
+  forceFrequency: 60
