@@ -21,7 +21,7 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
 
     private void Awake()
     {
-        _targetColliderName = gameObject.name + "Collider";
+        _targetColliderName = gameObject.name + "Target";
     }
 
     private enum Status
@@ -124,7 +124,7 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
     void OnTriggerEnter(Collider other)
     {
         Assert.AreNotEqual("", _targetColliderName, "targetColliderName is empty");
-        if (other.name == _targetColliderName)
+        if (other.name.Equals(_targetColliderName))
         {
             _onTarget = true;
         }
@@ -133,7 +133,7 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
     void OnTriggerExit(Collider other)
     {
         Assert.AreNotEqual("", _targetColliderName, "targetColliderName is empty");
-        if (other.name == _targetColliderName)
+        if (other.name.Equals(_targetColliderName))
         {
             _onTarget = false;
         }

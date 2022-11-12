@@ -90,7 +90,7 @@ public class EventController : MonoBehaviour
     public Vector3 PlaceInInventory(int objectId)
     {
         float dist = rightX - leftX;
-        Vector3 Position(int index) => new Vector3(((float) index / (maxItems + 1) * dist) - (dist / 2), defaultPos.y, defaultPos.z);
+        Vector3 Position(int i) => new Vector3((float) i / (maxItems + 1) * dist - dist / 2f, defaultPos.y, defaultPos.z);
         for (int i = 0; i < _inventory.Count; i++)
         {
             if (_inventory[i] == -1)
