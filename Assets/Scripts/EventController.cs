@@ -14,8 +14,6 @@ public class EventController : MonoBehaviour
     [SerializeField] private GameObject speaker;
     [SerializeField] public List<GameObject> puzzleObjects;
     public int level;
-    
-    private readonly HashSet<int> _usedObjects = new HashSet<int>();
     public Camera mainCamera;
     public float time;
     public float remainingTime;
@@ -24,6 +22,7 @@ public class EventController : MonoBehaviour
     private const int MaxItems = 3;
     private const float Dist = 6;
     private readonly List<int> _inventory = new List<int>();
+    private readonly HashSet<int> _usedObjects = new HashSet<int>();
 
     private bool _isPlaying = true;
 
