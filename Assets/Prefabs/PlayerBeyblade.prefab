@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4358753071533425440, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
       propertyPath: force
-      value: 100
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -4358753071533425440, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
       propertyPath: isPlayer
