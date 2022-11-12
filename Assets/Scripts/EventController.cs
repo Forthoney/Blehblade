@@ -17,13 +17,12 @@ public class EventController : MonoBehaviour
     public Camera mainCamera;
     public float time;
     public float remainingTime;
+    public Vector3 defaultPos;
 
-    [SerializeField] private int maxItems;
-    [SerializeField] private float screenWidth; // set this in editor, total width
-    [SerializeField] private float leftX;
-    [SerializeField] private float rightX;
-    private List<int> _inventory = new List<int>();
-    [SerializeField] private Vector3 defaultPos;
+    private const int MaxItems = 3;
+    private const float LeftX = -3;
+    private const float RightX = 3;
+    private readonly List<int> _inventory = new List<int>();
 
     private bool _isPlaying = true;
 
@@ -94,8 +93,8 @@ public class EventController : MonoBehaviour
 
     public Vector3 PlaceInInventory(int objectId)
     {
-        float dist = rightX - leftX;
-        Vector3 Position(int i) => new Vector3((float) i / (maxItems + 1) * dist - dist / 2f, defaultPos.y, defaultPos.z);
+        float dist = RightX - LeftX;
+        Vector3 Position(int i) => new Vector3((float) i / (MaxItems + 1) * dist - dist / 2f, defaultPos.y, defaultPos.z);
         for (int i = 0; i < _inventory.Count; i++)
         {
             if (_inventory[i] == -1)

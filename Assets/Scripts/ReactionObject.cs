@@ -8,8 +8,14 @@ public class ReactionObject : MonoBehaviour, IInteractiveObject
     [SerializeField] private Material newMaterial;
     [SerializeField] private bool changePosition;
     [SerializeField] private Vector3 newPosition;
+    [SerializeField] private int numTriggersNeeded = 1;
+
+    private int _triggered = 0;
     public void Activate()
     {
+        Debug.Log(_triggered);
+        if (++_triggered != numTriggersNeeded) return;
+        gameObject.SetActive(true);
         if (changeMaterial)
         {
             gameObject.GetComponent<Renderer>().material = newMaterial;
