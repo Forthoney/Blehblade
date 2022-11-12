@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+ using System.IO;
 
 public class AudioManageScript : MonoBehaviour
 {
     [SerializeField] private AudioSource aSource;
-    [SerializeField] private List<AudioClip> musicList;
+    public List<AudioClip> musicList;
     
     void Start()
     {

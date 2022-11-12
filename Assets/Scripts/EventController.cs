@@ -10,6 +10,11 @@ public class EventController : MonoBehaviour
 {
     [SerializeField] private GameObject playerBeyblade;
     [SerializeField] private GameObject enemyBeyblade;
+
+    [SerializeField] private GameObject speaker;
+
+    public int level;
+
     // Time limit
     // List of puzzle objects (must have InteractableObject script attached)
     [SerializeField] public List<GameObject> puzzleObjects;
@@ -53,6 +58,8 @@ public class EventController : MonoBehaviour
         playerBeyblade.GetComponent<Beyblade>().StartBeyblade();
         enemyBeyblade.GetComponent<Beyblade>().StartBeyblade();
         remainingTime = time;
+
+        speaker.GetComponent<AudioManageScript>().playSound(level);
     }
     
     void Update()
