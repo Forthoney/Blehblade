@@ -647,6 +647,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1887293317}
     m_Modifications:
+    - target: {fileID: 2851028706655812560, guid: c45ae6da898421248b9dc1f2d0355c81, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e3b7e632cc43c4840b809c7e516c4cd1, type: 2}
     - target: {fileID: 3425894546118110098, guid: c45ae6da898421248b9dc1f2d0355c81, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -657,7 +661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3425894546118110098, guid: c45ae6da898421248b9dc1f2d0355c81, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.087
+      value: -0.045
       objectReference: {fileID: 0}
     - target: {fileID: 3425894546118110098, guid: c45ae6da898421248b9dc1f2d0355c81, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2553,6 +2557,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3807526649671486756, guid: 66f9410b8faef484b9535107c982a566, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4ae8320e0787527468ca491f89dbb7a6, type: 2}
     - target: {fileID: 4353680593085697316, guid: 66f9410b8faef484b9535107c982a566, type: 3}
       propertyPath: m_Name
       value: PlayerBeyblade
@@ -2567,11 +2575,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8500701393364058989, guid: 66f9410b8faef484b9535107c982a566, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: 0.027
       objectReference: {fileID: 0}
     - target: {fileID: 8500701393364058989, guid: 66f9410b8faef484b9535107c982a566, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.09978104
       objectReference: {fileID: 0}
     - target: {fileID: 8500701393364058989, guid: 66f9410b8faef484b9535107c982a566, type: 3}
       propertyPath: m_LocalRotation.w
