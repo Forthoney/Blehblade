@@ -25,6 +25,8 @@ public class EventController : MonoBehaviour
     private List<int> _inventory = new List<int>();
     [SerializeField] private Vector3 defaultPos;
 
+    private bool _isPlaying = true;
+
     // Boilerplate to enable Singleton behavior
     private static EventController _instance;
     public static EventController Instance
@@ -57,9 +59,10 @@ public class EventController : MonoBehaviour
     void Update()
     {
         remainingTime -= Time.deltaTime;
-        if (remainingTime < 0)
+        if (remainingTime < 0 && _isPlaying)
         {
             Defeat();
+            _isPlaying = false;
         }
     }
     
@@ -78,11 +81,13 @@ public class EventController : MonoBehaviour
 
     private void Defeat()
     {
+        playerBeyblade.GetComponent<Beyblade>().EndBeyblade();
         Debug.Log("Defeat");
     }
 
     private void Win()
     {
+        enemyBeyblade.GetComponent<Beyblade>().EndBeyblade();
         Debug.Log("Win");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

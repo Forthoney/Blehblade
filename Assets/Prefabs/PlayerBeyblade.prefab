@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: dc2376eef15c248b4b688cc3b5d4edc3, type: 3}
     - target: {fileID: -4358753071533425440, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
       propertyPath: force
-      value: 100
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -4358753071533425440, guid: 393788b4c06fa4672a7cf5aca3923220, type: 3}
       propertyPath: isPlayer
