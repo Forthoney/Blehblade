@@ -1823,6 +1823,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  dm: {fileID: 0}
   level: 1
   mainCamera: {fileID: 1382802705}
   time: 100
@@ -2442,6 +2443,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1431737964}
     m_Modifications:
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e21df2c188d44a689c30d674cbaa2e0, type: 3}
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1778317374}
     - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: newMaterial
       value: 
