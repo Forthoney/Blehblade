@@ -3112,6 +3112,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3538648193695438084, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3538648193695438084, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 3538648193695438085, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3538648193931651821, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3538648194163508516, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
       propertyPath: m_Name
       value: DialogueManager
