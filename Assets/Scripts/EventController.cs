@@ -21,7 +21,7 @@ public class EventController : MonoBehaviour
 
     private const int MaxItems = 3;
     private const float Dist = 9;
-    private readonly List<int> _inventory = new List<int>();
+    public List<int> _inventory = new List<int>();
     private readonly HashSet<int> _usedObjects = new HashSet<int>();
 
     private bool _isPlaying = true;
@@ -103,7 +103,10 @@ public class EventController : MonoBehaviour
             {
                 _inventory[i] = objectId;
                 Debug.LogFormat("Add Item at {0}", i);
-                return Position(i);
+                Debug.Log(MaxItems);
+                Debug.Log(Dist);
+                Debug.Log(i);
+                return Position(i + 1);
             }
         }
         _inventory.Add(objectId);
