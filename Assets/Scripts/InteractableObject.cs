@@ -7,8 +7,12 @@ using UnityEngine.Assertions;
 
 public class InteractableObject : InteractiveObject
 {
+    [Header("Trigger Interactions")]
     [SerializeField] private List<GameObject> triggerObjects;
+    [SerializeField] private List<GameObject> deactivateOnTrigger;
+    [Header("Trap Interactions")]
     [SerializeField] private List<GameObject> trapTriggerObjects;
+    [SerializeField] private List<GameObject> deactivateOnTrap;
     
     [Header("Dragging Settings")]
     [SerializeField] private float speedDuringActivation = 1.0f;
@@ -22,9 +26,7 @@ public class InteractableObject : InteractiveObject
     private string _trapColliderName;
     private bool _onTarget = false;
     private bool _onTrap = false;
-
-    private readonly Action<GameObject> _activate = obj => { obj.GetComponent<InteractiveObject>().Activate(); };
-
+    
     private void Awake()
     {
         var objName = gameObject.name;
@@ -88,10 +90,15 @@ public class InteractableObject : InteractiveObject
         if (_state != (Status.Active, Movement.Dragging)) return;
         
         _state.Item2 = Movement.Returning;
-        if (_onTarget) Use();
         if (_onTrap)
         {
-            trapTriggerObjects.ForEach(_activate);
+            trapTriggerObjects.ForEach(Activation);
+            deactivateOnTrap.ForEach(obj => obj.SetActive(false));
+        } 
+        else if (_onTarget)
+        {
+            Use();
+            deactivateOnTrigger.ForEach(obj => obj.SetActive(false));
         }
     }
     
@@ -105,7 +112,7 @@ public class InteractableObject : InteractiveObject
     {
         EventController.Instance.PlayerUse(gameObject.GetInstanceID());
         EventController.Instance.RemoveItem(gameObject.GetInstanceID());
-        triggerObjects.ForEach(_activate);
+        triggerObjects.ForEach(Activation);
         Destroy(gameObject);
     }
 
