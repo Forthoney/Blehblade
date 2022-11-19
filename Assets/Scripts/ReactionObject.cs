@@ -22,6 +22,9 @@ public class ReactionObject : InteractiveObject
     }
     
     [SerializeField] private List<ReactionPair> reactions;
+    public AudioSource audioSource;
+    [SerializeField ]public AudioClip clip;
+    public float volume = 0.9f;
 
     private IEnumerator RunReaction()
     {
@@ -48,5 +51,6 @@ public class ReactionObject : InteractiveObject
     {
         gameObject.SetActive(true);
         StartCoroutine(RunReaction());
+        audioSource.PlayOneShot(clip, volume);
     }
 }
