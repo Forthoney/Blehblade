@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class InteractiveObject: MonoBehaviour
 {
+    [Header("Triggered Settings")]
     [SerializeField] protected float activationDelay = 0f;
     [SerializeField] protected int numTriggersNeeded = 1;
     private int _triggered = 0;

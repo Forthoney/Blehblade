@@ -7,7 +7,6 @@ using UnityEngine.Assertions;
 
 public class InteractableObject : InteractiveObject
 {
-    [Header("Triggered Settings")]
     [SerializeField] private List<GameObject> triggerObjects;
     [SerializeField] private List<GameObject> trapTriggerObjects;
     

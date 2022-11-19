@@ -12,6 +12,7 @@ public class ReactionObject : InteractiveObject
     [System.Serializable]
     private struct ReactionPair
     {
+        // Can't make Vector3 nullable because we need it to be Serializable
         public Material mat;
         public bool hasPos;
         public Vector3 pos;
