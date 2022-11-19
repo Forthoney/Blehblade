@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnholdableObject : MonoBehaviour, IInteractiveObject
+public class UnholdableObject : InteractiveObject
 {
     [SerializeField] private bool changeMaterial;
     [SerializeField] private Material newMaterial;
     [SerializeField] private List<GameObject> triggerObjects;
 
-    public void Activate()
+    protected override void ActivationWrapper()
     {
         gameObject.GetComponent<MeshCollider>().enabled = true;
     }
@@ -20,6 +20,6 @@ public class UnholdableObject : MonoBehaviour, IInteractiveObject
         {
             gameObject.GetComponent<Renderer>().material = newMaterial;
         }
-        triggerObjects.ForEach(obj => obj.GetComponent<IInteractiveObject>().Activate());
+        triggerObjects.ForEach(obj => obj.GetComponent<InteractiveObject>().Activate());
     }
 }
