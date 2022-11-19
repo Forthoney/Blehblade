@@ -7,11 +7,12 @@ using UnityEngine.Serialization;
 [System.Serializable]
 
 
-public class ReactionObject : MonoBehaviour, IInteractiveObject
+public class ReactionObject : InteractiveObject
 {
     [System.Serializable]
     private struct ReactionPair
     {
+        // Can't make Vector3 nullable because we need it to be Serializable
         public Material mat;
         public bool hasPos;
         public Vector3 pos;
@@ -21,17 +22,6 @@ public class ReactionObject : MonoBehaviour, IInteractiveObject
     }
     
     [SerializeField] private List<ReactionPair> reactions;
-    [SerializeField] private float activationDelay = 0f;
-    [SerializeField] private int numTriggersNeeded = 1;
-
-    private int _triggered = 0;
-    public void Activate()
-    {
-        if (++_triggered != numTriggersNeeded) return;
-
-        // Need Invoke because we cannot call StartCoroutine on an Inactive GameObject
-        Invoke(nameof(RunReactionWrapper), activationDelay);
-    }
 
     private IEnumerator RunReaction()
     {
@@ -54,7 +44,7 @@ public class ReactionObject : MonoBehaviour, IInteractiveObject
         }
     }
 
-    private void RunReactionWrapper()
+    protected override void ActivationWrapper()
     {
         gameObject.SetActive(true);
         StartCoroutine(RunReaction());

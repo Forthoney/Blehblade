@@ -5,22 +5,31 @@ using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class InteractableObject : MonoBehaviour, IInteractiveObject
+public class InteractableObject : InteractiveObject
 {
     [SerializeField] private List<GameObject> triggerObjects;
+    [SerializeField] private List<GameObject> trapTriggerObjects;
+    
+    [Header("Dragging Settings")]
     [SerializeField] private float speedDuringActivation = 1.0f;
     [SerializeField] private float speedDuringDragging = 2.0f;
-
     [SerializeField] private float draggingPlaneZ = 7f;
-    private Vector3 _inventoryPos; // TODO: Change this to private once the inventory manager script is finished
-    private bool _onTarget = false;
+
     // A tuple of representing the state of the object. It consists of the object's activation status and movement.
     private (Status, Movement) _state = (Status.Inactive, Movement.Stationary);
+    private Vector3 _inventoryPos;
     private string _targetColliderName;
+    private string _trapColliderName;
+    private bool _onTarget = false;
+    private bool _onTrap = false;
+
+    private readonly Action<GameObject> _activate = obj => { obj.GetComponent<InteractiveObject>().Activate(); };
 
     private void Awake()
     {
-        _targetColliderName = gameObject.name + "Target";
+        var objName = gameObject.name;
+        _targetColliderName = objName + "Target";
+        _trapColliderName = objName + "Trap";
     }
 
     private enum Status
@@ -80,9 +89,13 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
         
         _state.Item2 = Movement.Returning;
         if (_onTarget) Use();
+        if (_onTrap)
+        {
+            trapTriggerObjects.ForEach(_activate);
+        }
     }
-
-    public void Activate()
+    
+    protected override void ActivationWrapper()
     {
         gameObject.SetActive(true);
         gameObject.GetComponent<MeshCollider>().enabled = true;
@@ -92,9 +105,8 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
     {
         EventController.Instance.PlayerUse(gameObject.GetInstanceID());
         EventController.Instance.RemoveItem(gameObject.GetInstanceID());
-        triggerObjects.ForEach(obj => obj.GetComponent<IInteractiveObject>().Activate());
-        Debug.Log("Trigger Event!");
-        Destroy(this.gameObject);
+        triggerObjects.ForEach(_activate);
+        Destroy(gameObject);
     }
 
     private Vector3 Move(Vector3 dest, float speed)
@@ -123,19 +135,17 @@ public class InteractableObject : MonoBehaviour, IInteractiveObject
     void OnTriggerEnter(Collider other)
     {
         Assert.AreNotEqual("", _targetColliderName, "targetColliderName is empty");
-        if (other.name.Equals(_targetColliderName))
-        {
-            _onTarget = true;
-        }
+        string otherName = other.name;
+        _onTarget = otherName.Equals(_targetColliderName) || _onTarget;
+        _onTrap = otherName.Equals(_trapColliderName) || _onTrap;
     }
     
     void OnTriggerExit(Collider other)
     {
         Assert.AreNotEqual("", _targetColliderName, "targetColliderName is empty");
-        if (other.name.Equals(_targetColliderName))
-        {
-            _onTarget = false;
-        }
+        string otherName = other.name;
+        _onTarget = !otherName.Equals(_targetColliderName) && _onTarget;
+        _onTrap = !otherName.Equals(_trapColliderName) && _onTrap;
     }
 
     private Vector3 CalcMousePos()
