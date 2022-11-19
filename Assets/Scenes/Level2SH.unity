@@ -563,6 +563,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3378147461626916716, guid: e8dcde64d9de139409e29a9765930432, type: 3}
   m_PrefabInstance: {fileID: 808573323}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &808573325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2715547766751706394, guid: e8dcde64d9de139409e29a9765930432, type: 3}
+  m_PrefabInstance: {fileID: 808573323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &808573326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808573325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091e9cc293d684962a6e46f1e541c0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1778317374}
+  mouseDownClip: {fileID: 8300000, guid: 971cd95654a9d4f14b32e6c4ab97ac4f, type: 3}
+  mouseUpClip: {fileID: 0}
+  volume: 0.9
 --- !u!1 &948546983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 833841820512585086, guid: 045d8e2581e5b9f458545b7404593711, type: 3}
@@ -1227,6 +1248,7 @@ MonoBehaviour:
   time: 100
   remainingTime: 0
   defaultPos: {x: 0, y: 6, z: -3}
+  _inventory: 
 --- !u!4 &1245250498
 Transform:
   m_ObjectHideFlags: 0
@@ -1248,6 +1270,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1431737964}
     m_Modifications:
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 76c67610e385546d6ad233d9574b6486, type: 3}
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1778317374}
     - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: newMaterial
       value: 
@@ -1787,6 +1817,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 1431737964}
     m_Modifications:
     - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 70831cd2a73174dce96b47c47ac624ca, type: 3}
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1778317374}
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: reactions.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1932,6 +1970,11 @@ PrefabInstance:
 --- !u!1 &1778317373 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 103909354057897664, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
+  m_PrefabInstance: {fileID: 1778317372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1778317374 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6077490613810664007, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
   m_PrefabInstance: {fileID: 1778317372}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1870764747 stripped
