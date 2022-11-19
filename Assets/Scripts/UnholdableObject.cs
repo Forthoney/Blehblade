@@ -8,6 +8,7 @@ public class UnholdableObject : InteractiveObject
     [SerializeField] private bool changeMaterial;
     [SerializeField] private Material newMaterial;
     [SerializeField] private List<GameObject> triggerObjects;
+    [SerializeField] private List<GameObject> deactivateOnTrigger;
 
     protected override void ActivationWrapper()
     {
@@ -20,6 +21,7 @@ public class UnholdableObject : InteractiveObject
         {
             gameObject.GetComponent<Renderer>().material = newMaterial;
         }
-        triggerObjects.ForEach(obj => obj.GetComponent<InteractiveObject>().Activate());
+        triggerObjects.ForEach(Activation);
+        deactivateOnTrigger.ForEach(obj => obj.SetActive(false));
     }
 }

@@ -80,7 +80,7 @@ public class EventController : MonoBehaviour
         }
     }
 
-    private void Defeat()
+    public void Defeat()
     {
         playerBeyblade.GetComponent<Beyblade>().EndBeyblade();
         Debug.Log("Defeat");
