@@ -2903,6 +2903,22 @@ PrefabInstance:
       propertyPath: aSource
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: -7777925409868304618, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
+      propertyPath: musicList.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d5260b6555d7e425381535844f5b82b1, type: 3}
+    - target: {fileID: -7777925409868304618, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
+      propertyPath: musicList.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: d5260b6555d7e425381535844f5b82b1, type: 3}
+    - target: {fileID: -7777925409868304618, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
+      propertyPath: musicList.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: d5260b6555d7e425381535844f5b82b1, type: 3}
+    - target: {fileID: -7777925409868304618, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
+      propertyPath: musicList.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: d5260b6555d7e425381535844f5b82b1, type: 3}
     - target: {fileID: 103909354057897664, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
       propertyPath: m_Name
       value: Speaker
