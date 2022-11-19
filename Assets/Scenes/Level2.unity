@@ -1459,6 +1459,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
+--- !u!1 &1075940178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5228274733788086867, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
+  m_PrefabInstance: {fileID: 1075940177}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1075940179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075940178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091e9cc293d684962a6e46f1e541c0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1778317374}
+  mouseDownClip: {fileID: 8300000, guid: 3a9a690bdd34e4b9fb41cee9be468618, type: 3}
+  mouseUpClip: {fileID: 0}
+  volume: 0.9
 --- !u!1001 &1093398473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1829,6 +1850,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1431737964}
     m_Modifications:
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 76c67610e385546d6ad233d9574b6486, type: 3}
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1778317374}
     - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: newMaterial
       value: 
@@ -2593,6 +2622,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 1431737964}
     m_Modifications:
     - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 70831cd2a73174dce96b47c47ac624ca, type: 3}
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1778317374}
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: reactions.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2819,6 +2856,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
+--- !u!1 &1744747390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5228274733788086867, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
+  m_PrefabInstance: {fileID: 1744747389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1744747391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744747390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091e9cc293d684962a6e46f1e541c0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1778317374}
+  mouseDownClip: {fileID: 8300000, guid: 3a9a690bdd34e4b9fb41cee9be468618, type: 3}
+  mouseUpClip: {fileID: 0}
+  volume: 0.9
 --- !u!1001 &1754629455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2826,6 +2884,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1431737964}
     m_Modifications:
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 48916664c882348c2a9dbc4c8324e18f, type: 3}
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1778317374}
     - target: {fileID: 4879876876675541024, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: m_Name
       value: Sprinkler3
@@ -2972,6 +3038,11 @@ PrefabInstance:
 --- !u!1 &1778317373 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 103909354057897664, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
+  m_PrefabInstance: {fileID: 1778317372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1778317374 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6077490613810664007, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
   m_PrefabInstance: {fileID: 1778317372}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1784785097 stripped
