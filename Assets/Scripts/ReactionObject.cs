@@ -2,10 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
-
-[System.Serializable]
-
 
 public class ReactionObject : InteractiveObject
 {
