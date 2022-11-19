@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &34653424 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3538648194163508516, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
+  m_PrefabInstance: {fileID: 3538648193365429713}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &55314322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,6 +135,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 157280086}
     m_Modifications:
+    - target: {fileID: 3709683826855690399, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
+      propertyPath: useTriggerDialogueIndex
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4882068377891835941, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -436,6 +445,10 @@ PrefabInstance:
     - target: {fileID: 3709683826855690399, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
       propertyPath: numTriggersNeeded
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709683826855690399, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
+      propertyPath: useTriggerDialogueIndex
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3709683826855690399, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
       propertyPath: triggerObjects.Array.size
@@ -1029,6 +1042,10 @@ PrefabInstance:
     - target: {fileID: 3709683826855690399, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
       propertyPath: targetColliderName
       value: YarnTarget
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709683826855690399, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
+      propertyPath: useTriggerDialogueIndex
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3709683826855690399, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
       propertyPath: triggerObjects.Array.size
@@ -1759,6 +1776,10 @@ PrefabInstance:
       value: RemoteTarget
       objectReference: {fileID: 0}
     - target: {fileID: 3709683826855690399, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
+      propertyPath: useTriggerDialogueIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709683826855690399, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
       propertyPath: triggerObjects.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -2206,6 +2227,7 @@ MonoBehaviour:
   - {fileID: 163605175}
   - {fileID: 368542444}
   - {fileID: 1893326178}
+  dm: {fileID: 34653424}
   level: 1
   mainCamera: {fileID: 2003770690}
   time: 100
@@ -2266,6 +2288,10 @@ PrefabInstance:
     - target: {fileID: 3709683826855690399, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
       propertyPath: targetColliderName
       value: CheeseTarget
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709683826855690399, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
+      propertyPath: useTriggerDialogueIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3709683826855690399, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
       propertyPath: triggerObjects.Array.size
@@ -3258,24 +3284,38 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3538648194163508523, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
+      propertyPath: displaying
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3538648194163508523, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
+      propertyPath: lines.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3538648194163508523, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
       propertyPath: lines.Array.data[0]
-      value: test line1
+      value: Be careful with the ball of yarn.
       objectReference: {fileID: 0}
     - target: {fileID: 3538648194163508523, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
       propertyPath: lines.Array.data[1]
-      value: test line2
+      value: "I don\u2019t want it knocking over everything, especially the ashes
+        of your Grandpa in the top right corner of the room."
       objectReference: {fileID: 0}
     - target: {fileID: 3538648194163508523, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
       propertyPath: lines.Array.data[2]
-      value: test line3
+      value: It's windy enough outdoors, and now it's windy indoors too?
       objectReference: {fileID: 0}
     - target: {fileID: 3538648194163508523, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
       propertyPath: lines.Array.data[3]
-      value: test line4
+      value: Why would you do that?? Don't touch the drawer, I'll take care of it
+        afterwards
       objectReference: {fileID: 0}
     - target: {fileID: 3538648194163508523, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
       propertyPath: lines.Array.data[4]
-      value: test line5
+      value: What are you doing with my essential oils?
+      objectReference: {fileID: 0}
+    - target: {fileID: 3538648194163508523, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
+      propertyPath: lines.Array.data[5]
+      value: What's wrong with you?? Fine, you win
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfd5d2c839b0f1148960d21c7153a5b0, type: 3}
