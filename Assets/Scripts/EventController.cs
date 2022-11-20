@@ -13,7 +13,7 @@ public class EventController : MonoBehaviour
 
     [SerializeField] private GameObject speaker;
     [SerializeField] public List<GameObject> puzzleObjects;
-    [SerializeField] private GameObject dm;
+    [SerializeField] private GameObject dialogueManager;
 
     public int level;
     public Camera mainCamera;
@@ -132,23 +132,23 @@ public class EventController : MonoBehaviour
 
     public void displayDialogue(int dialogueID)
     {
-        dm.SetActive(true);
+        dialogueManager.SetActive(true);
         switch (dialogueID)
         {
             case 1:
-                dm.GetComponent<DialogueManager>().displayDialogue(0, 1);
+                dialogueManager.GetComponent<DialogueManager>().displayDialogue(0, 1);
                 break;
             case 2:
-                dm.GetComponent<DialogueManager>().displayDialogue(2, 2);
+                dialogueManager.GetComponent<DialogueManager>().displayDialogue(2, 2);
                 break;
             case 3:
-                dm.GetComponent<DialogueManager>().displayDialogue(3, 3);
+                dialogueManager.GetComponent<DialogueManager>().displayDialogue(3, 3);
                 break;
             case 4:
-                dm.GetComponent<DialogueManager>().displayDialogue(4, 4);
+                dialogueManager.GetComponent<DialogueManager>().displayDialogue(4, 4);
                 break;
             case 5:
-                dm.GetComponent<DialogueManager>().displayDialogue(5, 5);
+                dialogueManager.GetComponent<DialogueManager>().displayDialogue(5, 5);
                 break;
         }
     }
