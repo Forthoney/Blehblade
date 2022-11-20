@@ -11,6 +11,7 @@ public class InteractableObject : InteractiveObject
     [SerializeField] private List<GameObject> triggerObjects;
     [SerializeField] private List<GameObject> deactivateOnTrigger;
     [SerializeField] private int useTriggerDialogueIndex;
+    [SerializeField] private string targetNameOverride = null;
 
     [Header("Trap Interactions")]
     [SerializeField] private List<GameObject> trapTriggerObjects;
@@ -32,7 +33,7 @@ public class InteractableObject : InteractiveObject
     private void Awake()
     {
         var objName = gameObject.name;
-        _targetColliderName = objName + "Target";
+        _targetColliderName = string.IsNullOrEmpty(targetNameOverride) ? objName + "Target" : targetNameOverride;
         _trapColliderName = objName + "Trap";
     }
 
