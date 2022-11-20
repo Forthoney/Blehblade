@@ -9,6 +9,7 @@ public class UnholdableObject : InteractiveObject
     [SerializeField] private Material newMaterial;
     [SerializeField] private List<GameObject> triggerObjects;
     [SerializeField] private List<GameObject> deactivateOnTrigger;
+    private bool _isUsed = false;
 
     protected override void ActivationWrapper()
     {
@@ -17,11 +18,14 @@ public class UnholdableObject : InteractiveObject
 
     private void OnMouseDown()
     {
+        if (_isUsed) return;
+        
         if (changeMaterial)
         {
             gameObject.GetComponent<Renderer>().material = newMaterial;
         }
         triggerObjects.ForEach(Activation);
         deactivateOnTrigger.ForEach(obj => obj.SetActive(false));
+        _isUsed = true;
     }
 }
