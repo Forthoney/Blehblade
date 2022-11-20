@@ -134,6 +134,18 @@ PrefabInstance:
       propertyPath: aSource
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: -7777925409868304618, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
+      propertyPath: musicList.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 12258a6e190354a019c98607f60b3e59, type: 3}
+    - target: {fileID: -7777925409868304618, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
+      propertyPath: musicList.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 12258a6e190354a019c98607f60b3e59, type: 3}
+    - target: {fileID: -7777925409868304618, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
+      propertyPath: musicList.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 12258a6e190354a019c98607f60b3e59, type: 3}
     - target: {fileID: 103909354057897664, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
       propertyPath: m_Name
       value: Speaker
@@ -697,6 +709,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  dm: {fileID: 0}
   level: 1
   mainCamera: {fileID: 1047520234}
   time: 100
