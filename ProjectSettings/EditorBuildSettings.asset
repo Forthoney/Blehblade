@@ -9,18 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/mainMenu.unity
     guid: b683aa56de58543bd9d74fa19407ccdf
   - enabled: 1
-    path: Assets/Scenes/SJScene.unity
-    guid: 3bfda94b1706446d8881597d0dce3b87
+    path: Assets/Scenes/Level1.unity
+    guid: df691a5e07cfedb4c9e7c980cc8982d6
   - enabled: 1
-    path: Assets/Scenes/BHScene.unity
-    guid: 49f4ca95253864f1d8aad309d8601574
+    path: Assets/Scenes/Level2.unity
+    guid: f8ac7e7faaf4e624dbd18fd1d4a36a65
   - enabled: 1
-    path: Assets/Scenes/PrototypeStage.unity
-    guid: cb57efafb0f444cfca9de35d5641021f
+    path: Assets/Scenes/Level3.unity
+    guid: d8d2e6e39197f8a45ac4d8873175b946
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/mainMenu2.unity
-    guid: 6431b0b8dbf454cb39e8c3ac5ac14fcb
+    path: Assets/Scenes/Credits.unity
+    guid: bb4c66bca36504d8eb75e309654c4ebe
   m_configObjects: {}
