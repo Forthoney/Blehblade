@@ -6,17 +6,17 @@ public class ScrollCredit : MonoBehaviour
 {
     [SerializeField] private float speed;
     // Start is called before the first frame update
-    RectTransform m_RectTransform;
+    private RectTransform _rectTransform;
 
     void Start()
     {
         //Fetch the RectTransform from the GameObject
-        m_RectTransform = GetComponent<RectTransform>();
+        _rectTransform = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        m_RectTransform.anchoredPosition += new Vector2(0, speed * Time.deltaTime);
+        _rectTransform.anchoredPosition += new Vector2(0, speed * Time.deltaTime);
     }
 }
