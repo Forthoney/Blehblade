@@ -10,9 +10,9 @@ public abstract class InteractiveObject: MonoBehaviour
     [SerializeField] protected int numTriggersNeeded = 1;
     private int _triggered = 0;
     
-    protected readonly Action<GameObject> Activation = obj => { obj.GetComponent<InteractiveObject>().Activate(); };
+    protected readonly Action<GameObject> activation = obj => { obj.GetComponent<InteractiveObject>().Activate(); };
     
-    public void Activate()
+    private void Activate()
     {
         if (++_triggered != numTriggersNeeded) return;
         Invoke(nameof(ActivationWrapper), activationDelay);

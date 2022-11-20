@@ -94,7 +94,7 @@ public class InteractableObject : InteractiveObject
         _state.Item2 = Movement.Returning;
         if (_onTrap)
         {
-            trapTriggerObjects.ForEach(Activation);
+            trapTriggerObjects.ForEach(activation);
             deactivateOnTrap.ForEach(obj => obj.SetActive(false));
         } 
         else if (_onTarget)
@@ -115,7 +115,7 @@ public class InteractableObject : InteractiveObject
         EventController.Instance.PlayerUse(gameObject.GetInstanceID());
         EventController.Instance.RemoveItem(gameObject.GetInstanceID());
         EventController.Instance.DisplayDialogue(useTriggerDialogueIndex);
-        triggerObjects.ForEach(Activation);
+        triggerObjects.ForEach(activation);
         Destroy(gameObject);
     }
 
