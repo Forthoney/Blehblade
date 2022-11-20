@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class UnholdableObject : InteractiveObject
 {
+    [SerializeField] private int useTriggerDialogueIndex = -1;
     [SerializeField] private bool changeMaterial;
     [SerializeField] private Material newMaterial;
     [SerializeField] private List<GameObject> triggerObjects;
@@ -24,8 +25,9 @@ public class UnholdableObject : InteractiveObject
         {
             gameObject.GetComponent<Renderer>().material = newMaterial;
         }
-        triggerObjects.ForEach(Activation);
+        triggerObjects.ForEach(activation);
         deactivateOnTrigger.ForEach(obj => obj.SetActive(false));
+        EventController.Instance.DisplayDialogue(useTriggerDialogueIndex);
         _isUsed = true;
     }
 }

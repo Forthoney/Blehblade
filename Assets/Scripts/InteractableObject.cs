@@ -11,6 +11,7 @@ public class InteractableObject : InteractiveObject
     [SerializeField] private List<GameObject> triggerObjects;
     [SerializeField] private List<GameObject> deactivateOnTrigger;
     [SerializeField] private int useTriggerDialogueIndex;
+    [SerializeField] private string targetNameOverride = null;
 
     [Header("Trap Interactions")]
     [SerializeField] private List<GameObject> trapTriggerObjects;
@@ -32,7 +33,7 @@ public class InteractableObject : InteractiveObject
     private void Awake()
     {
         var objName = gameObject.name;
-        _targetColliderName = objName + "Target";
+        _targetColliderName = string.IsNullOrEmpty(targetNameOverride) ? objName + "Target" : targetNameOverride;
         _trapColliderName = objName + "Trap";
     }
 
@@ -94,7 +95,7 @@ public class InteractableObject : InteractiveObject
         _state.Item2 = Movement.Returning;
         if (_onTrap)
         {
-            trapTriggerObjects.ForEach(Activation);
+            trapTriggerObjects.ForEach(activation);
             deactivateOnTrap.ForEach(obj => obj.SetActive(false));
         } 
         else if (_onTarget)
@@ -115,7 +116,7 @@ public class InteractableObject : InteractiveObject
         EventController.Instance.PlayerUse(gameObject.GetInstanceID());
         EventController.Instance.RemoveItem(gameObject.GetInstanceID());
         EventController.Instance.DisplayDialogue(useTriggerDialogueIndex);
-        triggerObjects.ForEach(Activation);
+        triggerObjects.ForEach(activation);
         Destroy(gameObject);
     }
 
