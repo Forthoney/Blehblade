@@ -10,10 +10,11 @@ public class InteractableObject : InteractiveObject
     [Header("Trigger Interactions")]
     [SerializeField] private List<GameObject> triggerObjects;
     [SerializeField] private List<GameObject> deactivateOnTrigger;
+    [SerializeField] private int useTriggerDialogueIndex;
+
     [Header("Trap Interactions")]
     [SerializeField] private List<GameObject> trapTriggerObjects;
     [SerializeField] private List<GameObject> deactivateOnTrap;
-    [SerializeField] private int useTriggerDialogueIndex;
 
     [Header("Dragging Settings")]
     [SerializeField] private float speedDuringActivation = 1.0f;
@@ -113,7 +114,7 @@ public class InteractableObject : InteractiveObject
     {
         EventController.Instance.PlayerUse(gameObject.GetInstanceID());
         EventController.Instance.RemoveItem(gameObject.GetInstanceID());
-        EventController.Instance.displayDialogue(useTriggerDialogueIndex);
+        EventController.Instance.DisplayDialogue(useTriggerDialogueIndex);
         triggerObjects.ForEach(Activation);
         Destroy(gameObject);
     }

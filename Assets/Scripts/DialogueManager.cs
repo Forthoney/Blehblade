@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,48 +7,43 @@ using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     public List<string> lines;
-    public int currentLine;
-    public bool displaying;
-    public float timePerLine;
-    public float currTimePast;
-    public int currentEnd;
-    public TextMeshPro tmp;
-    public GameObject go;
+    [SerializeField] private float timePerLine;
 
-    // Update is called once per frame
-    void Update()
+    private TextMeshPro _textMeshPro;
+    private int _currentLine;
+    private bool _displaying = true;
+    private float _currTimePast;
+
+    private void Awake()
     {
-        if (displaying)
+        _textMeshPro = gameObject.GetComponent<TextMeshPro>();
+    }
+
+    private void Update()
+    {
+        if (_displaying)
         {
-            go.SetActive(true);
-
-            if (currTimePast >= timePerLine)
+            gameObject.SetActive(true);
+            if (_currTimePast >= timePerLine)
             {
-                currTimePast = 0;
-                if (currentLine < currentEnd)
-                {
-                    currentLine++;
-
-                }
-                else
-                {
-                    displaying = false;
-                }
+                _currTimePast = 0;
+                _displaying = false;
             }
-            currTimePast += Time.deltaTime;
-            tmp.text = lines[currentLine];
+            _currTimePast += Time.deltaTime;
+            _textMeshPro.text = lines[_currentLine];
         }
         else
         {
-            go.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 
-    public void displayDialogue(int start, int end)
+    public void DisplayDialogue(int lineNum)
     {
-        currentLine = start;
-        currTimePast = 0;
-        currentEnd = end;
-        displaying = true;
+        if (lineNum < 0) return;
+        
+        _currentLine = lineNum;
+        _currTimePast = 0;
+        _displaying = true;
     }
 }
