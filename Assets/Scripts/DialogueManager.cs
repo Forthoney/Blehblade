@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        _textMeshPro = gameObject.GetComponent<TextMeshPro>();
+        _textMeshPro = gameObject.GetComponentInChildren<TextMeshPro>();
     }
 
     private void Update()
