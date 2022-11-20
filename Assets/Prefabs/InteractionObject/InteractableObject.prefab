@@ -47,7 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211444b7e8431d241b39f25fdb4b3c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activationDelay: 0
+  numTriggersNeeded: 1
   triggerObjects: []
+  deactivateOnTrigger: []
+  useTriggerDialogueIndex: -1
+  trapTriggerObjects: []
+  deactivateOnTrap: []
   speedDuringActivation: 10
   speedDuringDragging: 10
   draggingPlaneZ: 7

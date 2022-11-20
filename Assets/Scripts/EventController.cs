@@ -8,22 +8,22 @@ using UnityEngine.SceneManagement;
 
 public class EventController : MonoBehaviour
 {
+    [Header("Beyblades")]
     [SerializeField] private GameObject playerBeyblade;
     [SerializeField] private GameObject enemyBeyblade;
 
     [SerializeField] private GameObject speaker;
     [SerializeField] public List<GameObject> puzzleObjects;
-    [SerializeField] private GameObject dialogueManager;
-
-    public int level;
+    
     public Camera mainCamera;
     public float time;
     public float remainingTime;
     public Vector3 defaultPos;
 
+    private GameObject _dialogueManager;
     private const int MaxItems = 3;
     private const float Dist = 9;
-    public List<int> _inventory = new List<int>();
+    private readonly List<int> _inventory = new List<int>();
     private readonly HashSet<int> _usedObjects = new HashSet<int>();
 
     private bool _isPlaying = true;
@@ -48,6 +48,7 @@ public class EventController : MonoBehaviour
         // Calling mainCamera is expensive (https://stackoverflow.com/a/61998177/18077664), so we call it once
         // here, then take it from here every time we need it for dragging an object.
         mainCamera = Camera.main;
+        _dialogueManager = GameObject.Find("DialogueManager");
     }
     
     void Start()
@@ -55,8 +56,7 @@ public class EventController : MonoBehaviour
         playerBeyblade.GetComponent<Beyblade>().StartBeyblade();
         enemyBeyblade.GetComponent<Beyblade>().StartBeyblade();
         remainingTime = time;
-
-        speaker.GetComponent<AudioManageScript>().playSound(level);
+        speaker.GetComponent<AudioManageScript>().playSound(SceneManager.GetActiveScene().buildIndex);
     }
     
     void Update()
@@ -130,26 +130,11 @@ public class EventController : MonoBehaviour
         throw new MissingMemberException();
     }
 
-    public void displayDialogue(int dialogueID)
+    public void DisplayDialogue(int dialogueID)
     {
-        dialogueManager.SetActive(true);
-        switch (dialogueID)
-        {
-            case 1:
-                dialogueManager.GetComponent<DialogueManager>().displayDialogue(0, 1);
-                break;
-            case 2:
-                dialogueManager.GetComponent<DialogueManager>().displayDialogue(2, 2);
-                break;
-            case 3:
-                dialogueManager.GetComponent<DialogueManager>().displayDialogue(3, 3);
-                break;
-            case 4:
-                dialogueManager.GetComponent<DialogueManager>().displayDialogue(4, 4);
-                break;
-            case 5:
-                dialogueManager.GetComponent<DialogueManager>().displayDialogue(5, 5);
-                break;
-        }
+        Debug.Log(dialogueID);
+        _dialogueManager.SetActive(true);
+        var dialogue = _dialogueManager.GetComponent<DialogueManager>();
+        dialogue.DisplayDialogue(dialogueID);
     }
 }
