@@ -258,6 +258,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 103909354057897664, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
   m_PrefabInstance: {fileID: 55697831}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &55697834 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6077490613810664007, guid: fc5110f8143894c28b5db34f97f7e821, type: 3}
+  m_PrefabInstance: {fileID: 55697831}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &130304362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -348,6 +353,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1437626766}
     m_Modifications:
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 838d55f1dda174ed3b830c85ad377bc7, type: 3}
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 55697834}
     - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: activationDelay
       value: 0.5
@@ -820,6 +833,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1437626766}
     m_Modifications:
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ee60c1e26b1214f1c90497fb1041a21e, type: 3}
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 55697834}
     - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: activationDelay
       value: 0.2
@@ -1817,6 +1838,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5228274733788086867, guid: d2b3d7690306485419a9901f7b956a39, type: 3}
   m_PrefabInstance: {fileID: 1611411117}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1048452422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048452416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091e9cc293d684962a6e46f1e541c0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 55697834}
+  mouseDownClip: {fileID: 8300000, guid: 3a9a690bdd34e4b9fb41cee9be468618, type: 3}
+  mouseUpClip: {fileID: 0}
+  volume: 0.9
 --- !u!1001 &1100989224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1902,6 +1939,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1437626766}
     m_Modifications:
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8275dea209bc74570a6888b7471e9819, type: 3}
+    - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 55697834}
     - target: {fileID: -4021713033839084495, guid: 1ff95a00f217b4a4b9b863771d2d0c9c, type: 3}
       propertyPath: activationDelay
       value: 0.4
@@ -2669,6 +2714,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2715547766751706394, guid: e8dcde64d9de139409e29a9765930432, type: 3}
   m_PrefabInstance: {fileID: 1985057128}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1844745215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844745210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091e9cc293d684962a6e46f1e541c0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 55697834}
+  mouseDownClip: {fileID: 8300000, guid: 895226a5cd03f4c6880b6d66b205c0ad, type: 3}
+  mouseUpClip: {fileID: 0}
+  volume: 0.9
 --- !u!1 &1845134308
 GameObject:
   m_ObjectHideFlags: 0
