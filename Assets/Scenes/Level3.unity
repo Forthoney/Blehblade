@@ -3085,7 +3085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 878399527453799339, guid: 97f2a0ea525488443a17545f58a55ace, type: 3}
       propertyPath: m_Name
-      value: DefeatScreen
+      value: Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97f2a0ea525488443a17545f58a55ace, type: 3}

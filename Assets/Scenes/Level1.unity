@@ -2175,7 +2175,7 @@ MonoBehaviour:
   - {fileID: 368542444}
   - {fileID: 1893326178}
   mainCamera: {fileID: 2003770690}
-  time: 2
+  time: 100
   remainingTime: 0
   defaultPos: {x: 0, y: 6, z: -3}
 --- !u!4 &1285749232

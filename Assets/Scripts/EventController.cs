@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class EventController : MonoBehaviour
 {
@@ -53,12 +53,9 @@ public class EventController : MonoBehaviour
     
     void Start()
     {
-        playerBeyblade.GetComponent<Beyblade>().StartBeyblade();
-        enemyBeyblade.GetComponent<Beyblade>().StartBeyblade();
-        remainingTime = time;
-        speaker.GetComponent<AudioManageScript>().playSound(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(SetupGame());
     }
-    
+
     void Update()
     {
         remainingTime -= Time.deltaTime;
@@ -68,6 +65,21 @@ public class EventController : MonoBehaviour
             _isPlaying = false;
         }
     }
+
+    private IEnumerator SetupGame()
+    {
+        var fadeFilter = GameObject.Find("Canvas").GetComponentInChildren<Image>();
+        for (float i = 4; i > 0; i -= Time.deltaTime)
+        {
+            // set color with i as alpha
+            fadeFilter.color = new Color(1, 1, 1, i);
+            yield return null;
+        }
+        playerBeyblade.GetComponent<Beyblade>().StartBeyblade();
+        enemyBeyblade.GetComponent<Beyblade>().StartBeyblade();
+        remainingTime = time;
+        speaker.GetComponent<AudioManageScript>().playSound(SceneManager.GetActiveScene().buildIndex);
+    } 
     
     public void PlayerUse(int objectId)
     {
@@ -84,7 +96,6 @@ public class EventController : MonoBehaviour
 
     public void Defeat()
     {
-        GameObject.Find("DefeatScreen").SetActive(true);
         enemyBeyblade.GetComponent<Beyblade>().EndBeyblade();
         playerBeyblade.GetComponent<Beyblade>().EndBeyblade();
     }
