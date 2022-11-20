@@ -84,7 +84,7 @@ public class EventController : MonoBehaviour
 
     public void Defeat()
     {
-        transform.GetChild(0).gameObject.SetActive(true);
+        GameObject.Find("DefeatScreen").SetActive(true);
         enemyBeyblade.GetComponent<Beyblade>().EndBeyblade();
         playerBeyblade.GetComponent<Beyblade>().EndBeyblade();
     }
